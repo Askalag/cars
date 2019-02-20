@@ -6,6 +6,7 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
+group = 'com.example.cars'
 
 version '1.0-SNAPSHOT'
 

@@ -1,0 +1,16 @@
+group 'com.example'
+
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+task explodedBuild() {
+    dependsOn(":backend:build")
+}
+
+task clean() {
+    dependsOn(":backend:clean")
+}

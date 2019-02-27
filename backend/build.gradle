@@ -28,6 +28,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
 }
 
 processResources.dependsOn(":frontend:bundle", ":frontend:distMove")

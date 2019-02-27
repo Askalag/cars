@@ -1,9 +1,7 @@
-package com.example.cars.service.security;
+package com.example.cars.security.service.security;
 
 import com.example.cars.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,20 +11,32 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Data
-@AllArgsConstructor
-public class UserPrinciple implements UserDetails{
-
+public class UserPrinciple implements UserDetails {
     private static final long serialVersionUID = 1L;
 
-    private long id;
+    private Long id;
+
     private String name;
-    private String userName;
+
+    private String username;
+
     private String email;
 
     @JsonIgnore
     private String password;
+
     private Collection<? extends GrantedAuthority> authorities;
+
+    public UserPrinciple(Long id, String name,
+                         String username, String email, String password,
+                         Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.authorities = authorities;
+    }
 
     public static UserPrinciple build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream().map(role ->
@@ -35,16 +45,29 @@ public class UserPrinciple implements UserDetails{
 
         return new UserPrinciple(
                 user.getId(),
-                user.getNickName(),
-                user.getLogin(),
+                user.getName(),
+                user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
                 authorities
         );
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+    public String getUsername() {
+        return username;
     }
 
     @Override
@@ -53,8 +76,8 @@ public class UserPrinciple implements UserDetails{
     }
 
     @Override
-    public String getUsername() {
-        return userName;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
     @Override

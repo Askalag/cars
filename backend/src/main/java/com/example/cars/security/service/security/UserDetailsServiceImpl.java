@@ -1,4 +1,4 @@
-package com.example.cars.service.security;
+package com.example.cars.security.service.security;
 
 import com.example.cars.model.User;
 import com.example.cars.repository.UserRepository;
@@ -8,18 +8,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 
 @Service
-public class UserDetailServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByLogin(username).orElseThrow(
-                () -> new UsernameNotFoundException("User not found with login : " + username)
-        );
+
+        User user = userRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("User Not Found with -> username or email : " + username));
+
         return UserPrinciple.build(user);
     }
 }

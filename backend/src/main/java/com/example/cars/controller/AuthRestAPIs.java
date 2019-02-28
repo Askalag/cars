@@ -14,7 +14,7 @@ import com.example.cars.security.message.request.LoginForm;
 import com.example.cars.security.message.request.SignUpForm;
 import com.example.cars.security.message.response.JwtResponse;
 import com.example.cars.security.message.response.ResponseMessage;
-import com.example.cars.security.service.jwt.JwtProvider;
+import com.example.cars.security.jwt.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

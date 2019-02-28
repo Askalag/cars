@@ -1,6 +1,6 @@
-package com.example.cars.security.service.jwt;
+package com.example.cars.security.jwt;
 
-import com.example.cars.security.service.security.UserPrinciple;
+import com.example.cars.security.UserPrinciple;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

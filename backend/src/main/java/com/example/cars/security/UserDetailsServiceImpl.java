@@ -1,4 +1,4 @@
-package com.example.cars.security.service.security;
+package com.example.cars.security;
 
 import com.example.cars.model.User;
 import com.example.cars.repository.UserRepository;

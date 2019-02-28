@@ -1,8 +1,7 @@
 package com.example.cars.security;
 
-import com.example.cars.security.service.jwt.JwtAuthEntryPoint;
-import com.example.cars.security.service.jwt.JwtAuthTokenFilter;
-import com.example.cars.security.service.security.UserDetailsServiceImpl;
+import com.example.cars.security.jwt.JwtAuthEntryPoint;
+import com.example.cars.security.jwt.JwtAuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -57,6 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().
                 authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

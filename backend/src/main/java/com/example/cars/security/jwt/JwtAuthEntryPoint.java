@@ -1,4 +1,4 @@
-package com.example.cars.security.service.jwt;
+package com.example.cars.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

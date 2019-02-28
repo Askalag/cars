@@ -1,7 +1,6 @@
-package com.example.cars.security.service.jwt;
+package com.example.cars.security.jwt;
 
-import com.example.cars.security.service.jwt.JwtProvider;
-import com.example.cars.security.service.security.UserDetailsServiceImpl;
+import com.example.cars.security.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

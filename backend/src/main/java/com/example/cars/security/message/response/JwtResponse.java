@@ -8,12 +8,12 @@ import org.springframework.security.core.GrantedAuthority;
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
-    private String username;
+    private String userName;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtResponse(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
+    public JwtResponse(String accessToken, String userName, Collection<? extends GrantedAuthority> authorities) {
         this.token = accessToken;
-        this.username = username;
+        this.userName = userName;
         this.authorities = authorities;
     }
 }

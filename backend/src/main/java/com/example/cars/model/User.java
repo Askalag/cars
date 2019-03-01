@@ -36,7 +36,8 @@ public class User{
 
     @NotBlank
     @Size(min=3, max = 50)
-    private String username;
+    @Column(name = "username")
+    private String userName;
 
     @NaturalId
     @NotBlank

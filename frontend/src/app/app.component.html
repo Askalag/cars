@@ -1,3 +1,37 @@
+<ng-container>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span *ngIf="false">Menu</span>
+      <div class="example-nav-element">
+        <p>Home</p>
+      </div>
+      <div class="example-nav-element">
+        <p>Management Board</p>
+      </div>
+      <div class="example-nav-element">
+        <p>Home</p>
+      </div>
+      <span class="example-spacer"></span>
+        <i class="material-icons" style="padding-right: 10px">face</i>
+      <p>Sign In</p>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav class="example-sidenav">
+       Sidenav -------------------><
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">Footer</mat-toolbar>
+</ng-container>
+
+<hr>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">

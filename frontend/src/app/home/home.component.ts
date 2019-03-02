@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.info = {
       token: this.token.getToken(),
-      userName: this.token.getUsername(),
+      userName: this.token.getUserName(),
       authorities: this.token.getAuthorities()
     };
   }

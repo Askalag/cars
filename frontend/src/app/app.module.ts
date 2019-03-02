@@ -13,6 +13,9 @@ import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import {AngularMaterial} from "./angular-material.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatIconModule} from "@angular/material/typings/icon";
 
 @NgModule({
   declarations: [
@@ -26,9 +29,11 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularMaterial
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

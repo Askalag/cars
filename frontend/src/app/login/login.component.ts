@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
     console.log(this.form);
 
     this.loginInfo = new AuthLoginInfo(
-      this.form.username,
+      this.form.userName,
       this.form.password);
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {
         this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUsername(data.userName);
+        this.tokenStorage.saveUserName(data.userName);
         this.tokenStorage.saveAuthorities(data.authorities);
 
         this.isLoginFailed = false;

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,10 @@ import { AuthLoginInfo } from '../auth/login-info';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+
+
+
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
@@ -25,6 +30,7 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorage.getAuthorities();
     }
   }
+
 
   onSubmit() {
     console.log(this.form);

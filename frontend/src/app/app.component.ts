@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,11 @@ export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
 
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(private tokenStorage: TokenStorageService) {
+  }
+
+
+
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -28,4 +33,5 @@ export class AppComponent implements OnInit {
       });
     }
   }
+
 }

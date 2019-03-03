@@ -5,3 +5,22 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+a {
+  color: dimgrey;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: progress;
+}
+
+a:hover {
+  color: dodgerblue;
+}
+
+a:link {
+  color: blue;
+  font-weight: normal;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+

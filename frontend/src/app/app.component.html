@@ -1,5 +1,5 @@
 <ng-container>
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     <mat-toolbar-row>
       <span *ngIf="false">Menu</span>
       <div class="example-nav-element">
@@ -13,7 +13,7 @@
       </div>
       <span class="example-spacer"></span>
         <i class="material-icons" style="padding-right: 10px">face</i>
-      <p>Sign In</p>
+      <a class="nav-link" routerLink="auth/login">Sign In</a>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -24,6 +24,7 @@
 
     <mat-sidenav-content>
       <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 

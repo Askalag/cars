@@ -41,6 +41,32 @@
 
 
  <div class="example-container2">
+   <form class="example-form" [formGroup]='loginForm'>
+
+     <mat-form-field>
+       <input type="text" matInput placeholder="Login" formControlName='login' required>
+       <mat-error *ngIf="loginForm.get('login').invalid && loginForm.get('login').touched">
+         Login is <strong>required</strong>
+       </mat-error>
+
+     </mat-form-field>
+
+     <mat-form-field>
+       <input type="password" matInput placeholder="Password" formControlName='password'>
+     </mat-form-field>
+
+     <mat-form-field>
+       <input type="password" matInput placeholder="Verify Password" formControlName='verifyPassword' [errorStateMatcher]="errMatcher">
+       <mat-error *ngIf="loginForm.hasError('passwordsDoNotMatch')">
+         Passwords do not match!
+       </mat-error>
+     </mat-form-field>
+
+     <div class="state">
+       Do passwords match?
+       <strong>{{!loginForm.hasError('passwordsDoNotMatch')}}</strong>
+     </div>
+   </form>
  </div>
 
 

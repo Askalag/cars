@@ -1,8 +1,10 @@
-.example-container2 {
+
+
+.example-container {
   display: flex;
   flex-direction: column;
 }
 
-.example-container2 > * {
-  width: 18%;
+.example-container > * {
+  width: 55%;
 }

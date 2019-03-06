@@ -24,6 +24,9 @@
 
     <mat-sidenav-content>
       <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
 
     </mat-sidenav-content>
   </mat-sidenav-container>
@@ -55,6 +58,4 @@
     </ul>
   </div>
 </nav>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+

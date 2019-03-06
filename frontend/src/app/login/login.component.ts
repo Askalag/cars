@@ -3,12 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators
+} from "@angular/forms";
 import {ErrorStateMatcher} from "@angular/material";
 
 class ErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return control.dirty && form.invalid;
+    return (control.dirty || control.touched) && form.form.hasError('passwordsDoNotMatch');
   }
 
 }
@@ -19,6 +26,36 @@ class ErrorMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  loginForm_validation_messages = {
+    'username': [
+      { type: 'required', message: 'Username is required' },
+      { type: 'minlength', message: 'Username must be at least 3 characters long' },
+      { type: 'maxlength', message: 'Username cannot be more than 15 characters long' },
+      { type: 'pattern', message: 'Your username must contain only numbers and letters' },
+      { type: 'validUsername', message: 'Your username has already been taken' },
+      { type: 'opaErr', message: 'opaErr message' },
+      { type: 'outOf15', message: '15 message' },
+      { type: 'outOf16', message: '16 message' },
+      { type: 'osa', message: 'osa message' }
+    ],
+    'email': [
+      { type: 'required', message: 'Email is required' },
+      { type: 'pattern', message: 'Enter a valid email' }
+    ],
+    'confirm_password': [
+      { type: 'required', message: 'Confirm password is required' },
+      { type: 'areEqual', message: 'Password mismatch' }
+    ],
+    'password': [
+      { type: 'required', message: 'Password is required' },
+      { type: 'minlength', message: 'Password must be at least 5 characters long' },
+      { type: 'pattern', message: 'Your password must contain at least one uppercase, one lowercase, and one number' }
+    ],
+    'terms': [
+      { type: 'pattern', message: 'You must accept terms and conditions' }
+    ]
+  }
 
   loginForm: FormGroup;
   errMatcher: ErrorMatcher = new ErrorMatcher();
@@ -44,17 +81,30 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      'login' : ['', [Validators.required]],
-      'password' : '',
+      'username' : ['',
+        Validators.compose([
+          this.userNameValidator,
+          Validators.minLength(3),
+          Validators.maxLength(15)
+      ])],
+      'password' : [''],
       'verifyPassword' : ''
-    }, { validator : this.passwordValidator
-    })
+    }, {validator : this.passwordMatchValidator})
   }
 
-  passwordValidator(form: FormGroup) {
-    const condition = form.get('password').value !== form.get('verifyPassword').value;
+  userNameValidator(control: FormControl) {
+    const value: string = control.value;
 
-    return condition ? { passwordsDoNotMatch: true} : null;
+    if (value === 'osa') return {osa:true};
+    if (value === '') return {required:true};
+
+    return null;
+  }
+
+  passwordMatchValidator(form: FormGroup) {
+    const match = form.get('password').value !== form.get('verifyPassword').value;
+
+    return match ? { passwordsDoNotMatch: true } : null;
   }
 
 
@@ -63,8 +113,8 @@ export class LoginComponent implements OnInit {
     console.log(this.form);
 
     this.loginInfo = new AuthLoginInfo(
-      this.form.userName,
-      this.form.password);
+      this.loginForm.get('username').value,
+      this.loginForm.get('password').value);
 
     this.authService.attemptAuth(this.loginInfo).subscribe(
       data => {

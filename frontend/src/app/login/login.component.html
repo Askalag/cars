@@ -1,42 +1,66 @@
+<div class="test1">
+  <mat-card>
+    <mat-grid-list cols="1" rowHeight="64px">
 
-<hr>
+      <form [formGroup]='loginForm' (ngSubmit)="onSubmit()">
+
+        <mat-grid-tile>
+          <h1>Login</h1>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="input-width">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput placeholder="Login" formControlName='username'>
+            <mat-error *ngFor="let validation of loginForm_validation_messages.username">
+              <mat-error class="error-message" *ngIf="loginForm.get('username').hasError(validation.type)">{{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="input-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Password" formControlName='password'>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="input-width">
+            <mat-label>Verify password</mat-label>
+            <input type="password" matInput placeholder="Verify Password" formControlName='verifyPassword' [errorStateMatcher]="errMatcher">
+            <mat-error *ngIf="loginForm.hasError('passwordsDoNotMatch')">
+              Passwords do not match!
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <button class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+          <div class="state">
+            Do passwords match?
+            <strong>{{!loginForm.hasError('passwordsDoNotMatch')}}</strong>
+          </div>
+          {{loginForm.valid}}
+          {{errorMessage}}
+
+        </mat-grid-tile>
+
+      </form>
+
+
+    </mat-grid-list>
+  </mat-card>
+  <br>
+  <button class="btn btn-primary" (click)="onTest()">test</button>
+</div>
 
 
 
- <div class="example-container">
-   <form class="example-container" [formGroup]='loginForm' (ngSubmit)="onSubmit()">
 
-     <mat-form-field appearance="outline">
-       <mat-label>Username</mat-label>
-       <input type="text" matInput placeholder="Login" formControlName='username'>
-       <mat-error *ngFor="let validation of loginForm_validation_messages.username">
-         <mat-error class="error-message" *ngIf="loginForm.get('username').hasError(validation.type)">{{validation.message}}
-         </mat-error>
-       </mat-error>
-     </mat-form-field>
 
-     <mat-form-field appearance="outline">
-       <mat-label>Password</mat-label>
-       <input type="password" matInput placeholder="Password" formControlName='password'>
-     </mat-form-field>
 
-     <mat-form-field appearance="outline">
-       <mat-label>Verify password</mat-label>
-       <input type="password" matInput placeholder="Verify Password" formControlName='verifyPassword' [errorStateMatcher]="errMatcher">
-       <mat-error *ngIf="loginForm.hasError('passwordsDoNotMatch')">
-         Passwords do not match!
-       </mat-error>
-     </mat-form-field>
-
-     <button class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
-     <div class="state">
-       Do passwords match?
-       <strong>{{!loginForm.hasError('passwordsDoNotMatch')}}</strong>
-     </div>
-     {{loginForm.valid}}
-     {{errorMessage}}
-   </form>
- </div>
 
 
 

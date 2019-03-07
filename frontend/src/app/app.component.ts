@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -10,11 +10,14 @@ import {FormControl, Validators} from '@angular/forms';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
+  public change: boolean = true;
 
   constructor(private tokenStorage: TokenStorageService) {
   }
 
-
+  onNotify(message:boolean):void {
+    this.change= message;
+  }
 
 
   ngOnInit() {

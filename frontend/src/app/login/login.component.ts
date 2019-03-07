@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
@@ -26,6 +26,13 @@ class ErrorMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>()
+
+
+
+  onTest() {
+    this.notify.emit(false);
+  }
 
   loginForm_validation_messages = {
     'username': [

@@ -1,3 +1,7 @@
+<div class="login-expand"  *ngIf="change">
+  <app-login (notify)="onNotify($event)"></app-login>
+</div>
+
 <ng-container>
   <mat-toolbar>
     <mat-toolbar-row>
@@ -23,9 +27,12 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-      <div class="container">
+
+      <div class="container" align="center">
+        <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+        <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
         <router-outlet></router-outlet>
+
       </div>
 
     </mat-sidenav-content>
@@ -34,7 +41,6 @@
   <mat-toolbar class="example-footer">Footer</mat-toolbar>
 </ng-container>
 
-<hr>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">

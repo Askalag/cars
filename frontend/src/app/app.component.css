@@ -23,4 +23,9 @@ a:link {
   cursor: pointer;
 }
 
+.login-expand {
+  position: fixed;
+  visibility: visible;
+  z-index: 100;
+}
 

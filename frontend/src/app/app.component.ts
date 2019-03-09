@@ -10,13 +10,17 @@ import {FormControl, Validators} from '@angular/forms';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
-  public change: boolean = true;
+  public blur: boolean = false;
 
   constructor(private tokenStorage: TokenStorageService) {
   }
 
+  onBlur() {
+    this.blur = !this.blur;
+  }
+
   onNotify(message:boolean):void {
-    this.change= message;
+    this.blur= message;
   }
 
 

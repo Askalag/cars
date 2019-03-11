@@ -26,13 +26,9 @@ class ErrorMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>()
 
 
 
-  onTest() {
-    this.notify.emit(false);
-  }
 
   loginForm_validation_messages = {
     'username': [

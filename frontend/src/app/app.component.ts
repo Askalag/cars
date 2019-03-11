@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,16 @@ import {FormControl, Validators} from '@angular/forms';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
-  public blur: boolean = false;
+
+  public  showWindow: string;
 
   constructor(private tokenStorage: TokenStorageService) {
+
   }
 
-  onBlur() {
-    this.blur = !this.blur;
-  }
 
-  onNotify(message:boolean):void {
-    this.blur= message;
+  onWindow(appWindow: string):void {
+    this.showWindow = appWindow;
   }
 
 

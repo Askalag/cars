@@ -1,12 +1,4 @@
-.login-frame {
-  width: 400px;
-  height: 400px;
-  position: absolute!important;
-  top: 275px;
-  left: 50%;
-  margin: -200px 0 0 -200px;
-  z-index: 15;
-}
+
 
 
 .input-width {

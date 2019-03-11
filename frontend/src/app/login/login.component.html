@@ -1,7 +1,7 @@
 
 <div>
   <div>
-    <div class="login-frame">
+    <div>
       <mat-card>
         <mat-grid-list cols="1" rowHeight="64px">
 
@@ -41,6 +41,7 @@
 
             <mat-grid-tile>
               <button class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+              <button class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
               <div class="state">
                 Do passwords match?
                 <strong>{{!loginForm.hasError('passwordsDoNotMatch')}}</strong>
@@ -55,8 +56,6 @@
 
         </mat-grid-list>
       </mat-card>
-      <br>
-      <button class="btn btn-primary" (click)="onTest()">test</button>
     </div>
   </div>
 </div>

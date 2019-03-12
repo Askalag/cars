@@ -6,9 +6,7 @@
   top: 0;
 }
 
-.example-nav-element {
-  padding-right: 25px;
-}
+
 
 .example-sidenav {
   display: flex;
@@ -18,9 +16,7 @@
   background: rgba(255, 0, 0, 0.5);
 }
 
-.example-spacer {
-  flex: 1 1 auto;
-}
+
 a {
   color: dimgrey;
   font-weight: bold;
@@ -55,14 +51,6 @@ a:link {
   z-index: 100;
 }
 
-.mat-toolbar-top {
-  width: 100%;
-  position: fixed;
-  background: #f5f5f5;
-  color: rgba(0,0,0,.87);
-  z-index: 100;
-}
-
 .mat-toolbar-row, .mat-toolbar-single-row {
   height: 44px;
   display: flex;
@@ -74,7 +62,7 @@ a:link {
   white-space: nowrap;
 }
 .mat-sidenav-content {
-  margin-top: 50px;
+  margin-top: 44px;
 }
 
 

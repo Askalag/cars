@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -10,16 +10,17 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
+  public userInfoName: string;
 
-  public  showWindow: string;
+  public action: string;
 
   constructor(private tokenStorage: TokenStorageService) {
 
   }
 
 
-  onWindow(appWindow: string):void {
-    this.showWindow = appWindow;
+  onAction(action: string):void {
+    this.action = action;
   }
 
 
@@ -38,6 +39,8 @@ export class AppComponent implements OnInit {
         return true;
       });
     }
+
+    this.userInfoName = this.tokenStorage.getUserName();
   }
 
 }

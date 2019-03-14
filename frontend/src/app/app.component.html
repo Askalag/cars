@@ -7,45 +7,8 @@
 
 <div>
   <div>
-    <ng-container>
-      <app-header (action)="onAction($event)"></app-header>
-
-      <mat-sidenav-container>
-        <mat-sidenav #sidenav mode="over" class="example-sidenav" [fixedInViewport]=true [fixedTopGap]="70"> Sidenav
-        </mat-sidenav>
-
-        <mat-sidenav-content>
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-
-          <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-          <router-outlet></router-outlet>
-
-        </mat-sidenav-content>
-      </mat-sidenav-container>
-
-      <mat-toolbar class="example-footer">Footer</mat-toolbar>
-    </ng-container>
-      </div>
+    <app-main-content (action)="onAction($event)"></app-main-content>
+  </div>
   </div>
 
 

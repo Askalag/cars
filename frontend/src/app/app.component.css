@@ -8,13 +8,7 @@
 
 
 
-.example-sidenav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  background: rgba(255, 0, 0, 0.5);
-}
+
 
 
 a {
@@ -61,9 +55,7 @@ a:link {
   align-items: center;
   white-space: nowrap;
 }
-.mat-sidenav-content {
-  margin-top: 44px;
-}
+
 
 
 .mat-toolbar-multiple-rows {

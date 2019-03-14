@@ -1,12 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from "../auth/token-storage.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-main-content',
+  templateUrl: './main-content.component.html',
+  styleUrls: ['./main-content.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class MainContentComponent implements OnInit {
 
   public userInfoName: string;
   @Output()
@@ -20,6 +20,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userInfoName = this.token.getUserName();
+  }
+
+  logout() {
+    this.token.signOut();
+    window.location.reload();
   }
 
 }

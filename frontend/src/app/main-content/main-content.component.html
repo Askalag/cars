@@ -1,0 +1,67 @@
+<div>
+  <ng-container>
+    <mat-toolbar class="mat-toolbar-top">
+      <mat-toolbar-row>
+        <span *ngIf="false">Menu</span>
+        <div class="example-nav-element">
+          <button mat-button (click)="sidenav.toggle()">Menu</button>
+        </div>
+        <div class="example-nav-element">
+          <button mat-button (click)="sidenav.toggle()">Home</button>
+        </div>
+        <div class="example-nav-element">
+          <button mat-button (click)="sidenav.toggle()">Board</button>
+        </div>
+        <span class="example-spacer"></span>
+        <div class="example-nav-element">
+          <i class="material-icons" style="font-size: 28px; display: block;">face</i>
+        </div>
+        <div class="example-nav-element">
+          <button mat-button *ngIf="!userInfoName" (click)="onAction('login')">Sign In</button>
+          {{userInfoName}}
+        </div>
+        <div class="example-nav-element" >
+
+
+        </div>
+
+
+
+        <div class="example-nav-element" *ngIf="userInfoName">
+          <button mat-button (click)="logout()"> ( Logout )</button>
+        </div>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav mode="over" class="example-sidenav" [fixedInViewport]=true [fixedTopGap]="45"> Sidenav
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+        <h1>hello</h1>
+
+        <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+        <router-outlet></router-outlet>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <mat-toolbar class="example-footer">Footer</mat-toolbar>
+  </ng-container>
+</div>
+
+

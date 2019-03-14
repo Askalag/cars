@@ -15,7 +15,7 @@ import { PmComponent } from './pm/pm.component';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { AngularMaterial } from "./angular-material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HeaderComponent } from './header/header.component';
+import { MainContentComponent } from './main-content/main-content.component';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { HeaderComponent } from './header/header.component';
     HomeComponent,
     AdminComponent,
     PmComponent,
-    HeaderComponent
+    MainContentComponent
   ],
   imports: [
     BrowserModule,

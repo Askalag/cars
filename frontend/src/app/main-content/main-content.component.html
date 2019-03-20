@@ -14,21 +14,22 @@
         </div>
         <span class="example-spacer"></span>
         <div class="example-nav-element">
-          <i class="material-icons" style="font-size: 28px; display: block;">face</i>
+          <i class="material-icons" style="font-size: 28px; display: block;">person</i>
         </div>
-        <div class="example-nav-element">
-          <button mat-button *ngIf="!userInfoName" (click)="onAction('login')">Sign In</button>
-          {{userInfoName}}
+        <div class="example-nav-element" *ngIf="!userInfoName">
+          <button mat-button  (click)="onAction('login')">Sign In</button>
+          |
+          <button mat-button  (click)="onAction('register')">Register</button>
         </div>
-        <div class="example-nav-element" >
-
-
-        </div>
-
-
 
         <div class="example-nav-element" *ngIf="userInfoName">
-          <button mat-button (click)="logout()"> ( Logout )</button>
+          <button mat-button [matMenuTriggerFor]="menu">{{userInfoName}}</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Ijhghghgh</button>
+            <button mat-menu-item>Ikkhhkhkjhfs</button>
+            <button mat-menu-item>Ill,mmm</button>
+            <button mat-menu-item (click)="logout()">log out</button>
+          </mat-menu>
         </div>
       </mat-toolbar-row>
 
@@ -38,26 +39,10 @@
       </mat-sidenav>
 
       <mat-sidenav-content>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
+        Simple text
 
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
 
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-        <h1>hello</h1>
-
-        <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-        <router-outlet></router-outlet>
-
+      <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
     <mat-toolbar class="example-footer">Footer</mat-toolbar>

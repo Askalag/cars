@@ -1,4 +1,9 @@
-
+.login-window {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  top: 275px;
+}
 
 
 .input-width {

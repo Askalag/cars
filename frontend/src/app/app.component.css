@@ -65,8 +65,6 @@ a:link {
 
 
 .login-frame {
-  width: 400px;
-  height: 400px;
   position: fixed!important;
   top: 275px;
   left: 50%;

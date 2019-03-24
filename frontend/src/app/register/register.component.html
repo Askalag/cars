@@ -1,48 +1,127 @@
-<div *ngIf="isSignedUp; else signupForm">
-  Your registration is successful. Please login!
+
+<div>
+  <div>
+    <div class="login-window">
+      <mat-card>
+        <mat-grid-list cols="1" rowHeight="64px">
+
+          <form [formGroup]='registerForm' (ngSubmit)="onSubmit()">
+
+            <mat-grid-tile>
+              <h1>Registration</h1>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field class="input-width">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput placeholder="Name" formControlName='name'>
+                <mat-error *ngFor="let validation of registerForm_validation_messages.name">
+                  <mat-error class="error-message" *ngIf="registerForm.get('name').hasError(validation.type)">{{validation.message}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field class="input-width">
+                <mat-label>Username</mat-label>
+                <input type="text" matInput placeholder="Username" formControlName='userName'>
+                <mat-error *ngFor="let validation of registerForm_validation_messages.userName">
+                  <mat-error class="error-message" *ngIf="registerForm.get('userName').hasError(validation.type)">{{validation.message}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field class="input-width">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput placeholder="Email" formControlName='email'>
+                <mat-error *ngFor="let validation of registerForm_validation_messages.email">
+                  <mat-error class="error-message" *ngIf="registerForm.get('email').hasError(validation.type)">{{validation.message}}
+                  </mat-error>
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field class="input-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Password" formControlName='password'>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <mat-form-field class="input-width">
+                <mat-label>Verify password</mat-label>
+                <input type="password" matInput placeholder="Verify Password" formControlName='verifyPassword' [errorStateMatcher]="errMatcher">
+                <mat-error *ngIf="registerForm.hasError('passwordsDoNotMatch')">
+                  Passwords do not match!
+                </mat-error>
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <button mat-stroked-button>register me</button>
+              {{errorMessage}}
+            </mat-grid-tile>
+
+          </form>
+
+
+        </mat-grid-list>
+      </mat-card>
+    </div>
+  </div>
 </div>
 
-<ng-template #signupForm>
-  <div class="row col-sm-6" style="max-width:350px;">
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-      <div class="form-group">
-        <label for="name">Your name</label>
-        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
-        <div *ngIf="f.submitted && name.invalid">
-          <div *ngIf="name.errors.required">Name is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="userName">Username</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.userName" #username="ngModel"
-          required />
-        <div *ngIf="f.submitted && username.invalid">
-          <div *ngIf="userName.errors.required">Username is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
-        <div *ngIf="f.submitted && email.invalid">
-          <div *ngIf="email.errors.required">Email is required</div>
-          <div *ngIf="email.errors.email">Email must be a valid email address</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-          required minlength="6" />
-        <div *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors.required">Password is required</div>
-          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary">Register</button>
-        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-          Signup failed!<br/>{{errorMessage}}
-        </div>
-      </div>
-    </form>
-  </div>
-</ng-template>
+
+
+<!--<div *ngIf="isSignedUp; else signupForm">-->
+  <!--Your registration is successful. Please login!-->
+<!--</div>-->
+
+<!--<ng-template #signupForm>-->
+  <!--<div class="row col-sm-6" style="max-width:350px;">-->
+    <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>-->
+      <!--<div class="form-group">-->
+        <!--<label for="name">Your name</label>-->
+        <!--<input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />-->
+        <!--<div *ngIf="f.submitted && name.invalid">-->
+          <!--<div *ngIf="name.errors.required">Name is required</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="userName">Username</label>-->
+        <!--<input type="text" class="form-control" name="username" [(ngModel)]="form.userName" #username="ngModel"-->
+          <!--required />-->
+        <!--<div *ngIf="f.submitted && username.invalid">-->
+          <!--<div *ngIf="userName.errors.required">Username is required</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="email">Email</label>-->
+        <!--<input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />-->
+        <!--<div *ngIf="f.submitted && email.invalid">-->
+          <!--<div *ngIf="email.errors.required">Email is required</div>-->
+          <!--<div *ngIf="email.errors.email">Email must be a valid email address</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="password">Password</label>-->
+        <!--<input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"-->
+          <!--required minlength="6" />-->
+        <!--<div *ngIf="f.submitted && password.invalid">-->
+          <!--<div *ngIf="password.errors.required">Password is required</div>-->
+          <!--<div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<button class="btn btn-primary">Register</button>-->
+        <!--<div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">-->
+          <!--Signup failed!<br/>{{errorMessage}}-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</ng-template>-->

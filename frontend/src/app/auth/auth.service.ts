@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 import { JwtResponse } from './jwt-response';
 import { AuthLoginInfo } from './login-info';
@@ -29,3 +29,5 @@ export class AuthService {
     return this.http.post<string>(this.signupUrl, info, httpOptions);
   }
 }
+
+

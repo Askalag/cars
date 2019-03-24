@@ -1,6 +1,12 @@
 <div *ngIf="action === 'login'">
-  <div class="login-frame">
+  <div class="frame">
     <app-login></app-login>
+  </div>
+  <div (click)="onAction('')" class="shadeWindow"></div>
+</div>
+<div *ngIf="action === 'register'">
+  <div class="frame">
+    <app-register></app-register>
   </div>
   <div (click)="onAction('')" class="shadeWindow"></div>
 </div>
@@ -8,8 +14,9 @@
 <div>
   <div>
     <app-main-content (action)="onAction($event)"></app-main-content>
+
   </div>
-  </div>
+</div>
 
 
 

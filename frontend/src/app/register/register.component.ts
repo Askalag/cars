@@ -23,21 +23,21 @@ export class RegisterComponent implements OnInit {
   registerForm_validation_messages = {
     'name' : [
       { type: 'required', message: 'Username is required' },
+      { type: 'minlength', message: 'Name must be at least 6 characters long' },
+      { type: 'maxlength', message: 'Username cannot be more than 60 characters long' },
     ],
     'userName': [
       { type: 'required', message: 'Username is required' },
       { type: 'minlength', message: 'Username must be at least 3 characters long' },
-      { type: 'maxlength', message: 'Username cannot be more than 15 characters long' },
+      { type: 'maxlength', message: 'Username cannot be more than 20 characters long' },
       { type: 'pattern', message: 'Your username must contain only numbers and letters' },
-      { type: 'validUsername', message: 'Your username has already been taken' },
-      { type: 'opaErr', message: 'opaErr message' },
-      { type: 'outOf15', message: '15 message' },
-      { type: 'outOf16', message: '16 message' },
-      { type: 'osa', message: 'osa message' }
+      { type: 'validUserName', message: 'Your username has already been taken' },
     ],
     'email': [
       { type: 'required', message: 'Email is required' },
-      { type: 'pattern', message: 'Enter a valid email' }
+      { type: 'maxlength', message: 'Email cannot be more than 30 characters long' },
+      { type: 'pattern', message: 'Enter a valid email' },
+      { type: 'validEmail', message: 'Your email has already been taken' }
     ],
     'confirm_password': [
       { type: 'required', message: 'Confirm password is required' },
@@ -45,7 +45,8 @@ export class RegisterComponent implements OnInit {
     ],
     'password': [
       { type: 'required', message: 'Password is required' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long' },
+      { type: 'minlength', message: 'Password must be at least 6 characters long' },
+      { type: 'maxlength', message: 'Password cannot be more than 40 characters long' },
       { type: 'pattern', message: 'Your password must contain at least one uppercase, one lowercase, and one number' }
     ],
     'terms': [
@@ -58,12 +59,13 @@ export class RegisterComponent implements OnInit {
   private subsc: Subscription;
 
   form: any = {};
-  signupInfo: SignUpInfo;
+  signUpInfo: SignUpInfo;
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
+  succeedMessage: string = '';
 
-  constructor(private authService: AuthService, private fb: FormBuilder) { }
+  constructor(private authService: AuthService, private fb: FormBuilder) { debugger}
 
   ngOnInit() {
     this.initForm();
@@ -73,33 +75,51 @@ export class RegisterComponent implements OnInit {
 
   initForm() {
     this.registerForm = this.fb.group({
-      'name' : [''],
-      'userName' : ['',
-        Validators.compose([
-          this.userNameValidator,
-          Validators.minLength(3),
-          Validators.maxLength(15)
+      'name' : ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(50),
+        this.nameValidator
+      ])],
+      'userName' : ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20),
+        this.userNameValidator
         ])],
-      'email' : ['', Validators.email],
-      'password' : [''],
-      'verifyPassword' : ''
+      'email' : ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(30),
+        Validators.email,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        this.emailValidator
+      ])],
+      'password' : ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(40),
+        this.passwordValidator
+      ])],
+      'verifyPassword' : ['']
     }, {validator : this.passwordMatchValidator})
   }
 
-  nameValidator(control: FormControl) {}
-
-  userNameValidator(control: FormControl) {
-    const value: string = control.value;
-
-    if (value === 'osa') return {osa:true};
-    if (value === '') return {required:true};
-
+  nameValidator(control: FormControl) {
     return null;
   }
 
-  emailValidator(control: FormControl) {}
+  userNameValidator(control: FormControl) {
+    // const value: string = control.value;
+    return null;
+  }
 
-  passwordValidator(control: FormControl) {}
+  emailValidator(control: FormControl) {
+    return null;
+  }
+
+  passwordValidator(control: FormControl) {
+    return null;
+  }
 
   passwordMatchValidator(form: FormGroup) {
     const match = form.get('password').value !== form.get('verifyPassword').value;
@@ -110,13 +130,13 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.form);
 
-    this.signupInfo = new SignUpInfo(
+    this.signUpInfo = new SignUpInfo(
       this.registerForm.get('name').value,
       this.registerForm.get('userName').value,
       this.registerForm.get('email').value,
       this.registerForm.get('password').value);
 
-    this.authService.signUp(this.signupInfo).subscribe(
+    this.authService.signUp(this.signUpInfo).subscribe(
       data => {
         console.log(data);
         this.isSignedUp = true;
@@ -126,13 +146,27 @@ export class RegisterComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isSignUpFailed = true;
+
+        if (this.errorMessage.includes('validUserName')) {
+          this.registerForm.controls['userName'].setErrors({'validUserName':true})
+        }
+
+        if (this.errorMessage.includes('validEmail')) {
+          this.registerForm.controls['email'].setErrors({'validEmail':true})
+        }
       },
+      () => {
+        this.succeedMessage = 'Succeeded !';
+        setTimeout(() =>
+          {
+            this.reloadPage();
+          },
+          2000);
+      }
     );
   }
 
-
-
   reloadPage() {
-    window.location.replace('dsfsdf');
+    window.location.replace('');
   }
 }

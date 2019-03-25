@@ -12,11 +12,11 @@ public class SignUpForm {
     private String name;
 
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 20)
     private String userName;
 
     @NotBlank
-    @Size(max = 60)
+    @Size(max = 30)
     @Email
     private String email;
 

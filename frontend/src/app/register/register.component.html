@@ -48,6 +48,10 @@
               <mat-form-field class="input-width">
                 <mat-label>Password</mat-label>
                 <input type="password" matInput placeholder="Password" formControlName='password'>
+                <mat-error *ngFor="let validation of registerForm_validation_messages.password">
+                  <mat-error class="error-message" *ngIf="registerForm.get('password').hasError(validation.type)">{{validation.message}}
+                  </mat-error>
+                </mat-error>
               </mat-form-field>
             </mat-grid-tile>
 
@@ -62,8 +66,15 @@
             </mat-grid-tile>
 
             <mat-grid-tile>
-              <button mat-stroked-button>register me</button>
-              {{errorMessage}}
+              <button mat-stroked-button [disabled]="!registerForm.valid">register me</button>
+            </mat-grid-tile>
+
+            <!--<mat-grid-tile *ngIf="(errorMessage && !succeedMessage)">-->
+              <!--{{errorMessage}}-->
+            <!--</mat-grid-tile>-->
+
+            <mat-grid-tile *ngIf="succeedMessage">
+              <h4 style="color: green">{{succeedMessage}}</h4>
             </mat-grid-tile>
 
           </form>

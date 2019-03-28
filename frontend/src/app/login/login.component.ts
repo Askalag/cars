@@ -27,38 +27,18 @@ class ErrorMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
-
-
-
   loginForm_validation_messages = {
-    'username': [
+    'userName': [
       { type: 'required', message: 'Username is required' },
       { type: 'minlength', message: 'Username must be at least 3 characters long' },
-      { type: 'maxlength', message: 'Username cannot be more than 15 characters long' },
-      { type: 'pattern', message: 'Your username must contain only numbers and letters' },
-      { type: 'validUsername', message: 'Your username has already been taken' },
-      { type: 'opaErr', message: 'opaErr message' },
-      { type: 'outOf15', message: '15 message' },
-      { type: 'outOf16', message: '16 message' },
-      { type: 'osa', message: 'osa message' }
-    ],
-    'email': [
-      { type: 'required', message: 'Email is required' },
-      { type: 'pattern', message: 'Enter a valid email' }
-    ],
-    'confirm_password': [
-      { type: 'required', message: 'Confirm password is required' },
-      { type: 'areEqual', message: 'Password mismatch' }
+      { type: 'maxlength', message: 'Username cannot be more than 20 characters long' }
     ],
     'password': [
       { type: 'required', message: 'Password is required' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long' },
-      { type: 'pattern', message: 'Your password must contain at least one uppercase, one lowercase, and one number' }
-    ],
-    'terms': [
-      { type: 'pattern', message: 'You must accept terms and conditions' }
+      { type: 'minlength', message: 'Password must be at least 6 characters long' },
+      { type: 'maxlength', message: 'Password cannot be more than 40 characters long' }
     ]
-  }
+  };
 
   loginForm: FormGroup;
   errMatcher: ErrorMatcher = new ErrorMatcher();
@@ -84,33 +64,28 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      'username' : ['',
+      'userName' : ['',
         Validators.compose([
           this.userNameValidator,
+          Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(15)
+          Validators.maxLength(20)
       ])],
-      'password' : [''],
-      'verifyPassword' : ''
-    }, {validator : this.passwordMatchValidator})
+      'password' : ['', Validators.compose([
+        this.passwordValidator,
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(40)
+      ])]
+    })
   }
 
   userNameValidator(control: FormControl) {
-    const value: string = control.value;
-
-    if (value === 'osa') return {osa:true};
-    if (value === '') return {required:true};
-
     return null;
   }
-
-  passwordMatchValidator(form: FormGroup) {
-    const match = form.get('password').value !== form.get('verifyPassword').value;
-
-    return match ? { passwordsDoNotMatch: true } : null;
+  passwordValidator(control: FormControl) {
+    return null;
   }
-
-
 
   onSubmit() {
     console.log(this.form);
@@ -139,6 +114,6 @@ export class LoginComponent implements OnInit {
   }
 
   reloadPage() {
-    window.location.replace('dsfsdf');
+    window.location.replace('');
   }
 }

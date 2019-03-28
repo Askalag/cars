@@ -4,7 +4,6 @@
     <div class="login-window">
       <mat-card>
         <mat-grid-list cols="1" rowHeight="64px">
-
           <form [formGroup]='loginForm' (ngSubmit)="onSubmit()">
 
             <mat-grid-tile>
@@ -14,9 +13,9 @@
             <mat-grid-tile>
               <mat-form-field class="input-width">
                 <mat-label>Username</mat-label>
-                <input type="text" matInput placeholder="Login" formControlName='username'>
-                <mat-error *ngFor="let validation of loginForm_validation_messages.username">
-                  <mat-error class="error-message" *ngIf="loginForm.get('username').hasError(validation.type)">{{validation.message}}
+                <input type="text" matInput placeholder="Login" formControlName='userName'>
+                <mat-error *ngFor="let validation of loginForm_validation_messages.userName">
+                  <mat-error class="error-message" *ngIf="loginForm.get('userName').hasError(validation.type)">{{validation.message}}
                   </mat-error>
                 </mat-error>
               </mat-form-field>
@@ -30,23 +29,11 @@
             </mat-grid-tile>
 
             <mat-grid-tile>
-              <mat-form-field class="input-width">
-                <mat-label>Verify password</mat-label>
-                <input type="password" matInput placeholder="Verify Password" formControlName='verifyPassword' [errorStateMatcher]="errMatcher">
-                <mat-error *ngIf="loginForm.hasError('passwordsDoNotMatch')">
-                  Passwords do not match!
-                </mat-error>
-              </mat-form-field>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
               <button mat-stroked-button [disabled]="!loginForm.valid">Login</button>
               {{errorMessage}}
             </mat-grid-tile>
 
           </form>
-
-
         </mat-grid-list>
       </mat-card>
     </div>

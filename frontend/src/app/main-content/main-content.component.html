@@ -9,21 +9,24 @@
         <div class="example-nav-element">
           <button mat-button (click)="sidenav.toggle()">Home</button>
         </div>
-        <div class="example-nav-element">
-          <button mat-button (click)="sidenav.toggle()">Board</button>
+        <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_JOKE')">
+          <button mat-button (click)="sidenav.toggle()">Cars Board</button>
+        </div>
+        <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_ADMIN')">
+          <button mat-button (click)="sidenav.toggle()">Claims</button>
         </div>
         <span class="example-spacer"></span>
         <div class="example-nav-element">
           <i class="material-icons" style="font-size: 28px; display: block;">person</i>
         </div>
-        <div class="example-nav-element" *ngIf="!userInfoName">
+        <div class="example-nav-element" *ngIf="!simpleUserInfo.userName">
           <button mat-button  (click)="onAction('login')">Sign In</button>
           |
           <button mat-button  (click)="onAction('register')">Register</button>
         </div>
 
-        <div class="example-nav-element" *ngIf="userInfoName">
-          <button mat-button [matMenuTriggerFor]="menu">{{userInfoName}}</button>
+        <div class="example-nav-element" *ngIf="simpleUserInfo.userName">
+          <button mat-button [matMenuTriggerFor]="menu">{{simpleUserInfo.userName}}</button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item>Ijhghghgh</button>
             <button mat-menu-item>Ikkhhkhkjhfs</button>

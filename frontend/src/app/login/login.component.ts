@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = '';
+  errorMessage: string;
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
 
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
     console.log(this.form);
 
     this.loginInfo = new AuthLoginInfo(
-      this.loginForm.get('username').value,
+      this.loginForm.get('userName').value,
       this.loginForm.get('password').value);
 
     this.authService.attemptAuth(this.loginInfo).subscribe(

@@ -8,7 +8,7 @@ import {TokenStorageService} from "../auth/token-storage.service";
 })
 export class MainContentComponent implements OnInit {
 
-  public userInfoName: string;
+  public simpleUserInfo: {userName: string, roles: string[], token: string} = {userName: '', roles: [], token: ''};
   @Output()
   public action = new EventEmitter<string>();
 
@@ -19,7 +19,8 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userInfoName = this.token.getUserName();
+    this.simpleUserInfo.userName = this.token.getUserName();
+    this.simpleUserInfo.roles = this.token.getAuthorities();
   }
 
   logout() {

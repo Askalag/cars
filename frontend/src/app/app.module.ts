@@ -16,6 +16,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { AngularMaterial } from "./angular-material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MainContentComponent } from './main-content/main-content.component';
+import {CarsBoardComponent} from "./cars-board/cars-board.component";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     HomeComponent,
     AdminComponent,
     PmComponent,
-    MainContentComponent
+    MainContentComponent,
+    CarsBoardComponent
   ],
   imports: [
     BrowserModule,

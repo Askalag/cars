@@ -30,6 +30,9 @@
 
             <mat-grid-tile>
               <button mat-stroked-button [disabled]="!loginForm.valid">Login</button>
+            </mat-grid-tile>
+
+            <mat-grid-tile *ngIf="errorMessage">
               {{errorMessage}}
             </mat-grid-tile>
 

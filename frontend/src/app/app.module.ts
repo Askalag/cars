@@ -17,6 +17,7 @@ import { AngularMaterial } from "./angular-material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MainContentComponent } from './main-content/main-content.component';
 import {CarsBoardComponent} from "./cars-board/cars-board.component";
+import {Car} from "./car/car.model";
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import {CarsBoardComponent} from "./cars-board/cars-board.component";
     FormsModule,
     HttpClientModule,
     AngularMaterial,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     httpInterceptorProviders,

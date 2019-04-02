@@ -1,12 +1,12 @@
 export class Car {
 
-  private id: number;
-  private model: string;
-  private vin: string;
-  private year: number;
-  private mileAge: number;
-  private timeStamp: string;
-  private addedBy: string;
+  public id: number;
+  public model: string;
+  public vin: string;
+  public year: number;
+  public mileAge: number;
+  public timeStamp: string;
+  public addedBy: string;
 
   constructor(model: string, vin: string, year: number, mileAge: number, timeStamp: string, addedBy: string ) {
     this.model = model;

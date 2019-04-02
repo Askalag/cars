@@ -10,7 +10,7 @@
           <button mat-button (click)="sidenav.toggle()">Home</button>
         </div>
         <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_JOKE')">
-          <button mat-button (click)="sidenav.toggle()">Cars Board</button>
+          <button mat-button routerLink="cars-board">Cars Board</button>
         </div>
         <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_ADMIN')">
           <button mat-button (click)="sidenav.toggle()">Claims</button>
@@ -24,13 +24,10 @@
           |
           <button mat-button  (click)="onAction('register')">Register</button>
         </div>
-
         <div class="example-nav-element" *ngIf="simpleUserInfo.userName">
           <button mat-button [matMenuTriggerFor]="menu">{{simpleUserInfo.userName}}</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>Ijhghghgh</button>
-            <button mat-menu-item>Ikkhhkhkjhfs</button>
-            <button mat-menu-item>Ill,mmm</button>
+            <button mat-menu-item>Info</button>
             <button mat-menu-item (click)="logout()">log out</button>
           </mat-menu>
         </div>
@@ -42,11 +39,9 @@
       </mat-sidenav>
 
       <mat-sidenav-content>
-        Simple text
-
-
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
+
     </mat-sidenav-container>
     <mat-toolbar class="example-footer">Footer</mat-toolbar>
   </ng-container>

@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   succeedMessage: string = '';
 
-  constructor(private authService: AuthService, private fb: FormBuilder) { debugger}
+  constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();

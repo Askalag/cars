@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TokenStorageService} from "../auth/token-storage.service";
+import {TokenStorageService} from '../auth/token-storage.service';
 
 @Component({
   selector: 'app-main-content',
@@ -14,7 +14,7 @@ export class MainContentComponent implements OnInit {
 
   constructor(private token: TokenStorageService) { }
 
-  onAction(action: string):void {
+  onAction(action: string): void {
     this.action.emit(action);
   }
 

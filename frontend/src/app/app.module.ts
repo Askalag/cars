@@ -1,23 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { PmComponent } from './pm/pm.component';
+import { RegisterComponent } from './register/register.component';
+import { UserComponent } from './user/user.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterial } from './angular-material.module';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
-import { AngularMaterial } from "./angular-material.module";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {CarsBoardComponent} from './cars-board/cars-board.component';
 import { MainContentComponent } from './main-content/main-content.component';
-import {CarsBoardComponent} from "./cars-board/cars-board.component";
-
+import {CarInfoComponent} from './car-info/car-info.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import {CarsBoardComponent} from "./cars-board/cars-board.component";
     AdminComponent,
     PmComponent,
     MainContentComponent,
-    CarsBoardComponent
+    CarsBoardComponent,
+    CarInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +44,6 @@ import {CarsBoardComponent} from "./cars-board/cars-board.component";
   providers: [
     httpInterceptorProviders,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

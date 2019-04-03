@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Car} from "../car/car.model";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Car} from '../shared/car.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,11 +19,14 @@ export class CarService {
   constructor(private http: HttpClient) {}
 
   getCarsBoard(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.carUrl, httpOptions)
+    return this.http.get<Car[]>(this.carUrl, httpOptions);
   }
 
   deleteCar(car: Car) {
-    return this.http.delete<Car>(this.carUrl + car.id, httpOptions)
+    return this.http.delete(this.carUrl + car.id, httpOptions);
+  }
+  getCarById(id: number) {
+    return this.http.get<Car>(this.carUrl + id, httpOptions);
   }
 
 }

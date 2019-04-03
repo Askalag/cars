@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from "@angular/material";
-import {Car} from "../car/car.model";
-import {CarService} from "../services/car.service";
+import {MatTableDataSource} from '@angular/material';
+import {Car} from '../shared/car.model';
+import {CarService} from '../services/car.service';
 
 @Component({
   selector: 'app-cars-board',
@@ -35,12 +35,12 @@ export class CarsBoardComponent implements OnInit {
     },
       error => {
         this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
-      })
+      });
   }
 
   onDelete(car: Car): void {
     this.carService.deleteCar(car).subscribe();
-    this.ELEMENT_DATA = this.ELEMENT_DATA.filter(c => c != car);
+    this.ELEMENT_DATA = this.ELEMENT_DATA.filter(c => c !== car);
     this.dataSource.data = this.ELEMENT_DATA;
   }
 

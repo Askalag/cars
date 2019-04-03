@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
-import {CarsBoardComponent} from "./cars-board/cars-board.component";
+import {CarsBoardComponent} from './cars-board/cars-board.component';
+import {CarInfoComponent} from './car-info/car-info.component';
 
 const routes: Routes = [
     {
@@ -27,7 +28,8 @@ const routes: Routes = [
         component: AdminComponent
     },
     {   path: 'cars-board',
-        component: CarsBoardComponent
+        component: CarsBoardComponent,
+        children: [{path: ':id', component: CarInfoComponent}]
 
     },
     {

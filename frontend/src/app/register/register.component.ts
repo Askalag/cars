@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth/auth.service';
 import { SignUpInfo } from '../auth/signup-info';
-import {ErrorStateMatcher} from "@angular/material";
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {Subscription} from "rxjs";
+import {ErrorStateMatcher} from '@angular/material';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 class ErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
   isSignedUp = false;
   isSignUpFailed = false;
   errorMessage = '';
-  succeedMessage: string = '';
+  succeedMessage = '';
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
@@ -101,7 +101,7 @@ export class RegisterComponent implements OnInit {
         this.passwordValidator
       ])],
       'verifyPassword' : ['']
-    }, {validator : this.passwordMatchValidator})
+    }, {validator : this.passwordMatchValidator});
   }
 
   nameValidator(control: FormControl) {
@@ -148,17 +148,16 @@ export class RegisterComponent implements OnInit {
         this.isSignUpFailed = true;
 
         if (this.errorMessage.includes('validUserName')) {
-          this.registerForm.controls['userName'].setErrors({'validUserName':true})
+          this.registerForm.controls['userName'].setErrors({'validUserName': true});
         }
 
         if (this.errorMessage.includes('validEmail')) {
-          this.registerForm.controls['email'].setErrors({'validEmail':true})
+          this.registerForm.controls['email'].setErrors({'validEmail': true});
         }
       },
       () => {
         this.succeedMessage = 'Succeeded !';
-        setTimeout(() =>
-          {
+        setTimeout(() => {
             this.reloadPage();
           },
           2000);

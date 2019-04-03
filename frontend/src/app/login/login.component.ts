@@ -10,8 +10,8 @@ import {
   FormGroupDirective,
   NgForm,
   Validators
-} from "@angular/forms";
-import {ErrorStateMatcher} from "@angular/material";
+} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material';
 
 class ErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6),
         Validators.maxLength(40)
       ])]
-    })
+    });
   }
 
   userNameValidator(control: FormControl) {

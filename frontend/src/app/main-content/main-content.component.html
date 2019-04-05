@@ -7,7 +7,7 @@
           <button mat-button (click)="sidenav.toggle()">Menu</button>
         </div>
         <div class="example-nav-element">
-          <button mat-button (click)="sidenav.toggle()">Home</button>
+          <button mat-button routerLink="home">Home</button>
         </div>
         <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_JOKE')">
           <button mat-button routerLink="cars-board">Cars Board</button>

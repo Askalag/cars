@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface CarService {
 
     Iterable<Car> getAll();
+    Car getById(Long id);
 }

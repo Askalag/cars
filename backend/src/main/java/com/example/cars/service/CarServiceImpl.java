@@ -18,4 +18,9 @@ public class CarServiceImpl implements CarService {
     public Iterable<Car> getAll() {
        return this.carRepository.findAll();
     }
+
+    @Override
+    public Car getById(Long id) {
+        return this.carRepository.getCarById(id);
+    }
 }

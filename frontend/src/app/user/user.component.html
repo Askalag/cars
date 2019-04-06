@@ -1,3 +1,59 @@
-<h4>Content from Server</h4>
-{{board}}
-{{errorMessage}}
+<div>
+  <div class="tiny-row2"></div>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="panelOpenPersonal">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal User data
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>
+        <strong>ID : </strong>
+        {{user.id}}
+      </div>
+      <div>
+        <strong>Name : </strong>
+        {{user.name}}
+      </div>
+      <div>
+        <strong>UserName : </strong>
+        {{user.userName}}
+      </div>
+      <div>
+        <strong>Email : </strong>
+        {{user.email}}
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="tiny-row5"></div>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="panelOpenAuth">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Authorization  User data
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>
+        <strong>User : </strong>
+        {{userInfo.userName}}
+      </div>
+      <div>
+        <strong>Roles : </strong>
+        {{userInfo.roles}}
+      </div>
+      <div>
+        <strong>Token : </strong>
+        {{userInfo.token}}
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="tiny-row5"></div>
+</div>

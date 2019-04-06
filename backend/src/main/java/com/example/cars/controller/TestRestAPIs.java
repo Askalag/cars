@@ -1,14 +1,12 @@
 package com.example.cars.controller;
 
 import com.example.cars.model.Car;
+import com.example.cars.model.User;
 import com.example.cars.service.CarService;
+import com.example.cars.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -17,6 +15,8 @@ public class TestRestAPIs {
 
     @Autowired
     private CarService carService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/api/test/free")
     public String free() {
@@ -50,5 +50,12 @@ public class TestRestAPIs {
     @GetMapping("api/test/cars-board/{id}")
     public Car getCarById(@PathVariable Long id) {
         return this.carService.getById(id);
+    }
+    @GetMapping("api/test/users/search")
+    public User getCarById(@RequestParam String userName) {
+        User user = this.userService.findByUserName(userName).orElse(new User());
+        user.setRoles(null);
+        user.setPassword(null);
+        return user;
     }
 }

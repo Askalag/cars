@@ -4,11 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { PmComponent } from './pm/pm.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 
@@ -26,8 +24,6 @@ import {CarInfoComponent} from './car-info/car-info.component';
     UserComponent,
     RegisterComponent,
     HomeComponent,
-    AdminComponent,
-    PmComponent,
     MainContentComponent,
     CarsBoardComponent,
     CarInfoComponent
@@ -46,4 +42,4 @@ import {CarInfoComponent} from './car-info/car-info.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModel { }

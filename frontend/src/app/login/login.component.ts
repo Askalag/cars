@@ -7,18 +7,8 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
-  FormGroupDirective,
-  NgForm,
   Validators
 } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material';
-
-class ErrorMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return (control.dirty || control.touched) && form.form.hasError('passwordsDoNotMatch');
-  }
-
-}
 
 @Component({
   selector: 'app-login',
@@ -41,9 +31,8 @@ export class LoginComponent implements OnInit {
   };
 
   loginForm: FormGroup;
-  errMatcher: ErrorMatcher = new ErrorMatcher();
 
-
+  succeedMessage: string;
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
@@ -109,6 +98,13 @@ export class LoginComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
+      },
+      () => {
+        this.succeedMessage = 'Succeeded !';
+        setTimeout(() => {
+            this.reloadPage();
+          },
+          2000);
       }
     );
   }

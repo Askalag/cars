@@ -27,7 +27,7 @@
         <div class="example-nav-element" *ngIf="simpleUserInfo.userName">
           <button mat-button [matMenuTriggerFor]="menu">{{simpleUserInfo.userName}}</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>Info</button>
+            <button mat-menu-item routerLink="/user">User Info</button>
             <button mat-menu-item (click)="logout()">log out</button>
           </mat-menu>
         </div>
@@ -43,7 +43,7 @@
       </mat-sidenav-content>
 
     </mat-sidenav-container>
-    <mat-toolbar class="example-footer">Footer</mat-toolbar>
+    <mat-toolbar class="example-footer"></mat-toolbar>
   </ng-container>
 </div>
 

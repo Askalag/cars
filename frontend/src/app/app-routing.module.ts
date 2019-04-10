@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import {CarsBoardComponent} from './cars-board/cars-board.component';
 import {CarInfoComponent} from './car-info/car-info.component';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
     {
@@ -19,7 +20,8 @@ const routes: Routes = [
     },
     {   path: 'cars-board',
         component: CarsBoardComponent,
-        children: []
+        children: [],
+        canActivate: [AuthGuard]
     },
     {path: 'cars-board/:id', component: CarInfoComponent},
     {
@@ -34,7 +36,11 @@ const routes: Routes = [
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
-    }
+    },
+    // {
+    //   path: '**',
+    //   component: PageNotFoundComponent
+    // }
 ];
 
 @NgModule({

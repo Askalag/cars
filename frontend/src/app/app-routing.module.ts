@@ -23,7 +23,9 @@ const routes: Routes = [
         children: [],
         canActivate: [AuthGuard]
     },
-    {path: 'cars-board/:id', component: CarInfoComponent},
+    {   path: 'cars-board/:id',
+        component: CarInfoComponent,
+        canActivate: [AuthGuard]},
     {
         path: 'auth/login',
         component: LoginComponent

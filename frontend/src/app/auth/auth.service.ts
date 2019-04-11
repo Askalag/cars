@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, Subscription} from 'rxjs';
 
-import { JwtResponse } from './jwt-response';
+import { JwtResponse } from './jwt-response.model';
 import { AuthLoginInfo } from './login-info';
 import { SignUpInfo } from './signup-info';
 import {TokenStorageService} from './token-storage.service';

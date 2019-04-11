@@ -62,8 +62,7 @@ export class RegisterComponent implements OnInit {
   signUpInfo: SignUpInfo;
   isSignedUp = false;
   isSignUpFailed = false;
-  errorMessage = '';
-  succeedMessage = '';
+  statusMessage: string;
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
@@ -144,19 +143,19 @@ export class RegisterComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.errorMessage = error.error.message;
+        this.statusMessage = error.error.message;
         this.isSignUpFailed = true;
 
-        if (this.errorMessage.includes('validUserName')) {
+        if (this.statusMessage.includes('validUserName')) {
           this.registerForm.controls['userName'].setErrors({'validUserName': true});
         }
 
-        if (this.errorMessage.includes('validEmail')) {
+        if (this.statusMessage.includes('validEmail')) {
           this.registerForm.controls['email'].setErrors({'validEmail': true});
         }
       },
       () => {
-        this.succeedMessage = 'Succeeded !';
+        this.statusMessage = 'Succeeded !';
         setTimeout(() => {
             this.reloadPage();
           },

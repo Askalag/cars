@@ -32,11 +32,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  succeedMessage: string;
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage: string;
+  statusMessage: string;
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
 
@@ -96,11 +95,11 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.errorMessage = error.error.message;
+        this.statusMessage = error.error.message;
         this.isLoginFailed = true;
       },
       () => {
-        this.succeedMessage = 'Succeeded !';
+        this.statusMessage = 'Succeeded !';
         setTimeout(() => {
             this.reloadPage();
           },

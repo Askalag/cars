@@ -35,14 +35,15 @@
 
     </mat-toolbar>
     <mat-sidenav-container>
-      <mat-sidenav #sidenav mode="over" class="example-sidenav" [fixedInViewport]=true [fixedTopGap]="45"> Sidenav
+      <mat-sidenav #sidenav mode="over" class="example-sidenav" [fixedInViewport]=true [fixedTopGap]="45" [fixedBottomGap]="45"> Sidenav
       </mat-sidenav>
-
-      <mat-sidenav-content>
-        <router-outlet></router-outlet>
+      <mat-sidenav-content style="height: calc(100vh - 90px);">
+        <div >
+          <router-outlet></router-outlet>
+        </div>
       </mat-sidenav-content>
-
     </mat-sidenav-container>
+
     <mat-toolbar class="example-footer"></mat-toolbar>
   </ng-container>
 </div>

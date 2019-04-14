@@ -43,3 +43,10 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.mat-coral {
+  background-color: lightcoral;
+  color: #fff;
+  margin-right: 1px;
+  margin-left: 1px;
+}

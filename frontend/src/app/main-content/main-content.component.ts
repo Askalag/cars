@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TokenStorageService} from '../auth/token-storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-content',
@@ -12,7 +13,8 @@ export class MainContentComponent implements OnInit {
   @Output()
   public action = new EventEmitter<string>();
 
-  constructor(private token: TokenStorageService) { }
+  constructor(private token: TokenStorageService,
+              private router: Router) { }
 
   onAction(action: string): void {
     this.action.emit(action);

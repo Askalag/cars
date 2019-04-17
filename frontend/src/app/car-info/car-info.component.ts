@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Car} from '../shared/car.model';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CarService} from '../services/car.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-car-info',
@@ -25,10 +24,6 @@ export class CarInfoComponent implements OnInit {
   ngOnInit() {
     this.selectedCarId = this.route.snapshot.params['id'];
 
-    // this.route.params.subscribe(
-    //   (params: Params) => {
-    //     this.selectedCarId = params['id'];
-    //   });
 
     this.carService.getCarById(this.selectedCarId).subscribe(data => {
       this.activeCar = data;

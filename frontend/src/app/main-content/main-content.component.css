@@ -44,9 +44,8 @@
   flex: 1 1 auto;
 }
 
-.mat-coral {
-  background-color: lightcoral;
-  color: #fff;
-  margin-right: 1px;
-  margin-left: 1px;
+.mat-exColor {
+  color: lightcoral;
+  margin-right: 2px;
+  margin-left: 2px;
 }

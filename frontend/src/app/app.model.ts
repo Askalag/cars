@@ -16,6 +16,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
 import {CarsBoardComponent} from './cars-board/cars-board.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import {CarInfoComponent} from './car-info/car-info.component';
+import {AddCarComponent} from './add-car/add-car.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {CarInfoComponent} from './car-info/car-info.component';
     HomeComponent,
     MainContentComponent,
     CarsBoardComponent,
-    CarInfoComponent
+    CarInfoComponent,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,

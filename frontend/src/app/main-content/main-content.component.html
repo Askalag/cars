@@ -17,13 +17,13 @@
         </div>
         <span class="example-spacer"></span>
         <div class="example-nav-element" *ngIf="router.url == '/cars-board' && simpleUserInfo.roles.includes('ROLE_JOKE')">
-          <button mat-stroked-button [color]="'coral'" routerLink="add">Add car</button>
+          <button mat-stroked-button [color]="'exColor'" routerLink="cars-board/add-card">Add car</button>
         </div>
         <div class="example-nav-element" *ngIf="router.url == '/cars-board'">
-          <button mat-stroked-button [color]="'coral'" routerLink="">Admin's menu 1</button>
+          <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 1</button>
         </div>
         <div class="example-nav-element" *ngIf="router.url == '/cars-board'">
-          <button mat-stroked-button [color]="'coral'" routerLink="">Admin's menu 2</button>
+          <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 2</button>
         </div>
         <span class="example-spacer"></span>
         <div class="example-nav-element">

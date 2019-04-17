@@ -19,15 +19,17 @@ export class CarInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private carService: CarService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
-    // this.selectedCarId = this.route.snapshot.params['id'];
+    this.selectedCarId = this.route.snapshot.params['id'];
 
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.selectedCarId = params['id'];
-      });
+    // this.route.params.subscribe(
+    //   (params: Params) => {
+    //     this.selectedCarId = params['id'];
+    //   });
+
     this.carService.getCarById(this.selectedCarId).subscribe(data => {
       this.activeCar = data;
     });

@@ -26,7 +26,7 @@ export class CarService {
     return this.http.delete(this.carUrl + car.id, httpOptions);
   }
   getCarById(id: number) {
-    return this.http.get<Car>(this.carUrl + id, httpOptions);
+    return this.http.get<Car>(this.carUrl + 'view/' + id, httpOptions);
   }
 
 }

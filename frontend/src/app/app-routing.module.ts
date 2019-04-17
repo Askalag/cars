@@ -8,7 +8,7 @@ import { UserComponent } from './user/user.component';
 import {CarsBoardComponent} from './cars-board/cars-board.component';
 import {CarInfoComponent} from './car-info/car-info.component';
 import {AuthGuard} from './auth/auth.guard';
-import {AddCarComponent} from './add-car/add-car.component';
+import {AddCarComponent} from './cars-board/add-car/add-car.component';
 
 const routes: Routes = [
   {

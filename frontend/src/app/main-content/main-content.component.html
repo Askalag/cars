@@ -17,7 +17,7 @@
         </div>
         <span class="example-spacer"></span>
         <div class="example-nav-element" *ngIf="router.url == '/cars-board' && simpleUserInfo.roles.includes('ROLE_JOKE')">
-          <button mat-stroked-button [color]="'exColor'" routerLink="cars-board/add-card">Add car</button>
+          <button mat-stroked-button [color]="'exColor'" routerLink="cars-board/add-car">Add car</button>
         </div>
         <div class="example-nav-element" *ngIf="router.url == '/cars-board'">
           <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 1</button>
@@ -47,7 +47,7 @@
     <mat-sidenav-container>
       <mat-sidenav #sidenav mode="over" class="example-sidenav" [fixedInViewport]=true [fixedTopGap]="45" [fixedBottomGap]="45"> Sidenav
       </mat-sidenav>
-      <mat-sidenav-content style="height: calc(100vh - 90px);">
+      <mat-sidenav-content>
         <div >
           <router-outlet></router-outlet>
         </div>

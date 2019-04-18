@@ -49,3 +49,9 @@
   margin-right: 2px;
   margin-left: 2px;
 }
+
+.mat-drawer-container {
+  background-color: #ffff;
+  color: rgba(0,0,0,.87);
+  height: calc(100vh - 45px);
+}

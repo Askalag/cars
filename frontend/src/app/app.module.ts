@@ -16,7 +16,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
 import {CarsBoardComponent} from './cars-board/cars-board.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import {CarInfoComponent} from './car-info/car-info.component';
-import {AddCarComponent} from './add-car/add-car.component';
+import {AddCarComponent} from './cars-board/add-car/add-car.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({

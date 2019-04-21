@@ -1,81 +1,37 @@
 <div>
-
-  <div class="container" fxLayout="wrap" fxLayoutAlign="center center">
+  <div>
     <div>
-      <mat-card>
-        <form [formGroup]='addCarForm' (ngSubmit)="onSubmit()">
-          <mat-form-field class="input-width">
-            <mat-label>Name</mat-label>
-            <input type="text" matInput placeholder="Name" formControlName='name'>
-            <mat-error *ngFor="let validation of addCarForm_validation_messages.name">
-              <mat-error class="error-message"
-                         *ngIf="addCarForm.get('name').hasError(validation.type)">{{validation.message}}
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-        </form>
-      </mat-card>
-    </div>
+      <form>
+        <mat-card>
+          <div class="container" fxLayout="row wrap" fxLayoutAlign="center">
 
-    <div>
-      <mat-card>
-        <form [formGroup]='addCarForm' (ngSubmit)="onSubmit()">
-          <mat-form-field class="input-width">
-            <mat-label>Name</mat-label>
-            <input type="text" matInput placeholder="Name" formControlName='name'>
-            <mat-error *ngFor="let validation of addCarForm_validation_messages.name">
-              <mat-error class="error-message"
-                         *ngIf="addCarForm.get('name').hasError(validation.type)">{{validation.message}}
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-        </form>
-      </mat-card>
-    </div>
+            <div style="padding: 3px;">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Model" value="">
+              </mat-form-field>
+            </div>
 
-    <div>
-      <mat-card>
-        <form [formGroup]='addCarForm' (ngSubmit)="onSubmit()">
-          <mat-form-field class="input-width">
-            <mat-label>Name</mat-label>
-            <input type="text" matInput placeholder="Name" formControlName='name'>
-            <mat-error *ngFor="let validation of addCarForm_validation_messages.name">
-              <mat-error class="error-message"
-                         *ngIf="addCarForm.get('name').hasError(validation.type)">{{validation.message}}
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-        </form>
-      </mat-card>
-    </div>
+            <div style="padding: 3px;">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Vin" value="">
+              </mat-form-field>
+            </div>
 
-    <mat-card>
-      <form [formGroup]='addCarForm' (ngSubmit)="onSubmit()">
-        <mat-form-field class="input-width">
-          <mat-label>Name</mat-label>
-          <input type="text" matInput placeholder="Name" formControlName='name'>
-          <mat-error *ngFor="let validation of addCarForm_validation_messages.name">
-            <mat-error class="error-message"
-                       *ngIf="addCarForm.get('name').hasError(validation.type)">{{validation.message}}
-            </mat-error>
-          </mat-error>
-        </mat-form-field>
+            <div style="padding: 3px;">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Favorite food" value="">
+              </mat-form-field>
+            </div>
+
+            <div style="padding: 3px;">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Favorite food" value="Sushi">
+              </mat-form-field>
+            </div>
+
+          </div>
+        </mat-card>
       </form>
-    </mat-card>
-
-    <mat-card>
-      <form [formGroup]='addCarForm' (ngSubmit)="onSubmit()">
-        <mat-form-field class="input-width">
-          <mat-label>Name</mat-label>
-          <input type="text" matInput placeholder="Name" formControlName='name'>
-          <mat-error *ngFor="let validation of addCarForm_validation_messages.name">
-            <mat-error class="error-message"
-                       *ngIf="addCarForm.get('name').hasError(validation.type)">{{validation.message}}
-            </mat-error>
-          </mat-error>
-        </mat-form-field>
-      </form>
-    </mat-card>
-
+    </div>
   </div>
 </div>

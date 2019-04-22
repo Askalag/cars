@@ -47,13 +47,18 @@ public class TestRestAPIs {
         return this.carService.getAll();
     }
 
+    @PutMapping("/api/test/cars-board/add")
+    public String addCar(@RequestBody Car car) {
+        this.carService.addCar(car);
+    }
+
     @GetMapping("api/test/cars-board/view/{id}")
     public Car getCarById(@PathVariable Long id) {
         return this.carService.getById(id);
     }
 
     @GetMapping("api/test/users/search")
-    public User getCarById(@RequestParam String userName) {
+    public User getUserById(@RequestParam String userName) {
         User user = this.userService.findByUserName(userName).orElse(new User());
         user.setRoles(null);
         user.setPassword(null);

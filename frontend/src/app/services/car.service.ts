@@ -22,6 +22,10 @@ export class CarService {
     return this.http.get<Car[]>(this.carUrl, httpOptions);
   }
 
+  addCar(car: Car): Observable<string> {
+    return this.http.put<string>(this.carUrl + '/add', car, httpOptions);
+  }
+
   deleteCar(car: Car) {
     return this.http.delete(this.carUrl + car.id, httpOptions);
   }

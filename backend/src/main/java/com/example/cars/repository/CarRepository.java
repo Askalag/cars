@@ -11,6 +11,5 @@ import java.util.Optional;
 public interface CarRepository extends JpaRepository<Car, Long> {
 
     Car getCarById(Long id);
-    void addCar(Car car);
 
 }

@@ -48,8 +48,8 @@ public class TestRestAPIs {
     }
 
     @PutMapping("/api/test/cars-board/add")
-    public String addCar(@RequestBody Car car) {
-        this.carService.addCar(car);
+    public Car addCar(@RequestBody Car car) {
+        return this.carService.addCar(car);
     }
 
     @GetMapping("api/test/cars-board/view/{id}")

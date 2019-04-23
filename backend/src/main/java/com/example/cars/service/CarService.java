@@ -9,5 +9,5 @@ public interface CarService {
 
     Iterable<Car> getAll();
     Car getById(Long id);
-    void addCar(Car car);
+    Car addCar(Car car);
 }

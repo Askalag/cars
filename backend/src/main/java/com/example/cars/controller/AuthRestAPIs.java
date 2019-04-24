@@ -113,12 +113,4 @@ public class AuthRestAPIs {
 
         return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
     }
-
-    @RequestMapping(produces = "application/json", value = "/username", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserNameSimple(@RequestHeader(value="Authorization") String token){
-        String jwtToken = token.replace("Bearer", "");
-        boolean test = jwtProvider.validateJwtToken(jwtToken);
-        return jwtToken;
-    }
 }

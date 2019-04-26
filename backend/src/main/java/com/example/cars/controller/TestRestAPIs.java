@@ -60,6 +60,7 @@ public class TestRestAPIs {
     }
     // -----------------new variant
     @PutMapping("/api/test/cars-board/add")
+    @PreAuthorize("hasRole('Joke') or hasRole('ADMIN')")
     public ResponseEntity<?> addCar(@RequestBody Car car, @RequestHeader(value = "Authorization") String barToken) {
         Car newCar = car;
         String token = barToken.replace("Bearer ", "");

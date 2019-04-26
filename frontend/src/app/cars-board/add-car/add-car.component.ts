@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material';
 import {CarService} from '../../services/car.service';
-import {Car} from "../../shared/car.model";
+import {Car} from '../../shared/car.model';
 
 class ErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -89,9 +89,11 @@ export class AddCarComponent implements OnInit {
       this.addCarForm.get('vin').value,
       this.addCarForm.get('year').value,
       this.addCarForm.get('mileage').value,
-      '',
-      ''
+      null,
+      null
     );
+
+    // this.carService.addCar(this.car).subscribe()
 
   }
 

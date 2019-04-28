@@ -29,11 +29,12 @@ export class AddCarComponent implements OnInit {
 
     ],
     'year': [
-      { type: 'required', message: 'Year is required' }
+      { type: 'required', message: 'Year is required' },
+      { type: 'yEqual', message: 'Year should contains only numbers' }
     ],
     'mileage': [
       { type: 'required', message: 'Mileage is required' },
-      { type: 'areEqual', message: 'Mileage must be between 1 and 6 numbers ' }
+      { type: 'maEqual', message: 'Mileage should contains only numbers' }
     ]
   };
 
@@ -42,13 +43,12 @@ export class AddCarComponent implements OnInit {
   addCarForm: FormGroup;
   errMatcher: ErrorMatcher = new ErrorMatcher();
 
+
   constructor(private fb: FormBuilder,
               private carService: CarService) { }
 
   ngOnInit() {
     this.initForm();
-
-
   }
 
   initForm() {
@@ -57,24 +57,41 @@ export class AddCarComponent implements OnInit {
       'vin' : ['',
         Validators.compose([
           Validators.required,
-          this.vinValidator()
+          this.vinValidator
         ])],
       'mileAge' : ['',
         Validators.compose([
           Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(6),
-          this.mileAgeValidator()
-
+          this.mileAgeValidator
         ])],
-      'year' : [''],
+      'year' : ['',
+        Validators.compose([
+          Validators.required,
+          this.yearValidator
+        ])],
     }, {validator : this.allMatchValidator});
   }
 
-  vinValidator() {
+  vinValidator(fc: FormControl) {
+    const vin: string = fc.value;
+    return vin.length === 17 ? null : {validLength: true};
+  }
+  mileAgeValidator(fc: FormControl) {
+    const mileAge: number = Number(fc.value);
+
+    if (isNaN(mileAge)) {
+      return {maEqual: true};
+    }
+
     return null;
   }
-  mileAgeValidator() {
+  yearValidator(fc: FormControl) {
+    const year: number = Number(fc.value);
+
+    if (isNaN(year)) {
+      return {yEqual: true};
+    }
+
     return null;
   }
 
@@ -84,16 +101,18 @@ export class AddCarComponent implements OnInit {
 
   onSubmit() {
     this.car = new Car(
-      null,
       this.addCarForm.get('model').value,
       this.addCarForm.get('vin').value,
       this.addCarForm.get('year').value,
-      this.addCarForm.get('mileage').value,
-      null,
-      null
+      this.addCarForm.get('mileAge').value
     );
 
-    // this.carService.addCar(this.car).subscribe()
+    this.carService.addCar(this.car).subscribe(
+      data => {},
+      error => {
+        console.log(error);
+      },
+      () => {});
 
   }
 

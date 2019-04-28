@@ -6,20 +6,20 @@
           <div class="container" fxLayout="row wrap" fxLayoutAlign="center">
 
             <div style="padding: 3px;">
-                <mat-form-field class="input-width">
-                  <mat-label>Model</mat-label>
-                  <input type="text" matInput placeholder="Model" formControlName='model'>
-                  <mat-error *ngFor="let validation of addCarForm_validation_messages.model">
-                    <mat-error class="error-message" *ngIf="addCarForm.get('model').hasError(validation.type)">{{validation.message}}
-                    </mat-error>
+              <mat-form-field class="input-width">
+                <mat-label>Model</mat-label>
+                <input type="text" matInput placeholder="Model" formControlName='model'>
+                <mat-error *ngFor="let validation of addCarForm_validation_messages.model">
+                  <mat-error class="error-message" *ngIf="addCarForm.get('model').hasError(validation.type)">{{validation.message}}
                   </mat-error>
-                </mat-form-field>
+                </mat-error>
+              </mat-form-field>
             </div>
 
             <div style="padding: 3px;">
-              <mat-form-field class="input-width">
+              <mat-form-field class="input-width" >
                 <mat-label>VIN</mat-label>
-                <input type="text" matInput placeholder="Vin" formControlName='vin'>
+                <input type="text" matInput placeholder="Vin" formControlName='vin' oninput="this.value = this.value.toUpperCase()">
                 <mat-error *ngFor="let validation of addCarForm_validation_messages.vin">
                   <mat-error class="error-message" *ngIf="addCarForm.get('vin').hasError(validation.type)">{{validation.message}}
                   </mat-error>
@@ -50,6 +50,7 @@
             </div>
 
           </div>
+          <div style="height: 44px"></div>
           <div fxLayout="row wrap" fxLayoutAlign="center center">
             <button mat-stroked-button [disabled]="!addCarForm.valid">Add car</button>
           </div>

@@ -23,7 +23,7 @@ export class CarService {
   }
 
   addCar(car: Car): Observable<string> {
-    return this.http.put<string>(this.carUrl + '/add', car, httpOptions);
+    return this.http.put<string>(this.carUrl + 'add', car, httpOptions);
   }
 
   deleteCar(car: Car) {

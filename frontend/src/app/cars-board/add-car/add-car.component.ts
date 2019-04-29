@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import {ErrorStateMatcher} from '@angular/material';
 import {CarService} from '../../services/car.service';
 import {Car} from '../../shared/car.model';
+import {windowCount} from "rxjs/operators";
 
 class ErrorMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -38,7 +39,9 @@ export class AddCarComponent implements OnInit {
     ]
   };
 
-  public car: Car;
+  car: Car;
+  statusMessage: string;
+
 
   addCarForm: FormGroup;
   errMatcher: ErrorMatcher = new ErrorMatcher();
@@ -111,8 +114,15 @@ export class AddCarComponent implements OnInit {
       data => {},
       error => {
         console.log(error);
+        if (error.error.message.includes('already')) {
+          this.addCarForm.controls['vin'].setErrors({unique: true});
+        }
+        this.statusMessage = error.error.message;
       },
-      () => {});
+      () => {
+        this.statusMessage = 'Succeed';
+        window.location.replace('http://localhost:4200/cars/cars-board');
+      });
 
   }
 

@@ -16,23 +16,23 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'user',
+    path: 'users/user',
     component: UserComponent
   },
   {
-    path: 'cars-board',
+    path: 'cars/cars-board',
     component: CarsBoardComponent,
     children: [],
     canActivate: [AuthGuard]
   },
   {
-    path: 'cars-board/add-car',
+    path: 'cars/cars-board/add-car',
     component: AddCarComponent,
     children: [],
     canActivate: [AuthGuard]
   },
   {
-    path: 'cars-board/view/:id',
+    path: 'cars/cars-board/view/:id',
     component: CarInfoComponent,
     canActivate: [AuthGuard]
   },

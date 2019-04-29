@@ -20,47 +20,24 @@ import java.util.Date;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RestController
-public class TestRestAPIs {
+@RestController()
+@RequestMapping(value = "/api/cars")
+public class CarsController {
 
     @Autowired
     private CarService carService;
-    @Autowired
-    private UserService userService;
+
     @Autowired
     private JwtProvider jwtProvider;
 
-    @GetMapping("/api/test/free")
-    public String free() {
-        return ">>> free Contents!";
-    }
-
-    @GetMapping("/api/test/user")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public String userAccess() {
-        return ">>> User Contents!";
-    }
-
-    @GetMapping("/api/test/pm")
-    @PreAuthorize("hasRole('PM') or hasRole('ADMIN')")
-    public String projectManagementAccess() {
-        return ">>> Project Management Board";
-    }
-
-    @GetMapping("/api/test/admin")
-    @PreAuthorize("hasRole('ADMIN')")
-    public String adminAccess() {
-        return ">>> Admin Contents";
-    }
-
-    @GetMapping("/api/test/cars-board")
+    @GetMapping("/cars-board")
     @PreAuthorize("hasRole('JOKE') or hasRole('ADMIN')")
     public Iterable<Car> carsList() {
         return this.carService.getAll();
     }
     // -----------------new variant
-    @PutMapping("/api/test/cars-board/add")
-    @PreAuthorize("hasRole('Joke') or hasRole('ADMIN')")
+    @PutMapping("/cars-board/add")
+    @PreAuthorize("hasRole('JOKE') or hasRole('ADMIN')")
     public ResponseEntity<?> addCar(@RequestBody Car car, @RequestHeader(value = "Authorization") String barToken) {
         Car newCar = car;
         String token = barToken.replace("Bearer ", "");
@@ -80,16 +57,21 @@ public class TestRestAPIs {
     }
     //-------------------
 
-    @GetMapping("api/test/cars-board/view/{id}")
+    @GetMapping("/cars-board/view/{id}")
     public Car getCarById(@PathVariable Long id) {
         return this.carService.getById(id);
     }
 
-    @GetMapping("api/test/users/search")
-    public User getUserById(@RequestParam String userName) {
-        User user = this.userService.findByUserName(userName).orElse(new User());
-        user.setRoles(null);
-        user.setPassword(null);
-        return user;
+    @DeleteMapping("/cars-board/delete")
+    @PreAuthorize("hasRole('JOKE') or hasRole('ADMIN')")
+    public ResponseEntity<?> deleteCar(@RequestBody Car car) {
+        Car delCar = car;
+        try {
+            this.carService.deleteCar(car);
+            return new ResponseEntity<>(new ResponseMessage("The car with a vin " + car.getVin() + " has been deleted"), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ResponseMessage("The car with a vin " + car.getVin() + " has been deleted"), HttpStatus.BAD_REQUEST);
+        }
     }
+
 }

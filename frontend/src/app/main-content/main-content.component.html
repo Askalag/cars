@@ -10,19 +10,19 @@
           <button mat-button routerLink="home">Home</button>
         </div>
         <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_JOKE')">
-          <button mat-button routerLink="cars-board" color="primary">Cars Board</button>
+          <button mat-button routerLink="/cars/cars-board" color="primary">Cars Board</button>
         </div>
         <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_ADMIN')">
           <button mat-button (click)="sidenav.toggle()" color="warn">Claims</button>
         </div>
         <span class="example-spacer"></span>
-        <div class="example-nav-element" *ngIf="router.url == '/cars-board' && simpleUserInfo.roles.includes('ROLE_JOKE')">
-          <button mat-stroked-button [color]="'exColor'" routerLink="cars-board/add-car">Add car</button>
+        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board' && simpleUserInfo.roles.includes('ROLE_JOKE')">
+          <button mat-stroked-button [color]="'exColor'" routerLink="/cars/cars-board/add-car">Add car</button>
         </div>
-        <div class="example-nav-element" *ngIf="router.url == '/cars-board'">
+        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board'">
           <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 1</button>
         </div>
-        <div class="example-nav-element" *ngIf="router.url == '/cars-board'">
+        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board'">
           <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 2</button>
         </div>
         <span class="example-spacer"></span>
@@ -37,7 +37,7 @@
         <div class="example-nav-element" *ngIf="simpleUserInfo.userName">
           <button mat-button [matMenuTriggerFor]="menu">{{simpleUserInfo.userName}}</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/user">User Info</button>
+            <button mat-menu-item routerLink="users/user">User Info</button>
             <button mat-menu-item (click)="logout()">log out</button>
           </mat-menu>
         </div>
@@ -50,6 +50,7 @@
       <mat-sidenav-content>
         <div >
           <router-outlet></router-outlet>
+          <div style="margin-bottom: 40px" fxLayout="row" fxLayoutAlign="center center"></div>
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>

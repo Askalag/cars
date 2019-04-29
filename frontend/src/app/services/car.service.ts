@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class CarService {
 
-  private carUrl = 'http://localhost:8080/api/test/cars-board/';
+  private carUrl = 'http://localhost:8080/api/cars/cars-board/';
 
   constructor(private http: HttpClient) {}
 
@@ -25,9 +25,9 @@ export class CarService {
   addCar(car: Car): Observable<string> {
     return this.http.put<string>(this.carUrl + 'add', car, httpOptions);
   }
-
+  // ----- new way for test
   deleteCar(car: Car) {
-    return this.http.delete(this.carUrl + car.id, httpOptions);
+    return this.http.request('delete', this.carUrl + 'delete', {'body': car});
   }
   getCarById(id: number) {
     return this.http.get<Car>(this.carUrl + 'view/' + id, httpOptions);

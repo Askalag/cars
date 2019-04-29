@@ -39,6 +39,8 @@ export class CarsBoardComponent implements OnInit {
   }
 
   onDelete(car: Car): void {
+    const deleteCar: Car = car;
+    console.log(car);
     this.carService.deleteCar(car).subscribe();
     this.ELEMENT_DATA = this.ELEMENT_DATA.filter(c => c !== car);
     this.dataSource.data = this.ELEMENT_DATA;

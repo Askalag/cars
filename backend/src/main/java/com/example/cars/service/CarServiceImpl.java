@@ -35,4 +35,9 @@ public class CarServiceImpl implements CarService {
         Car newCar = car;
         return this.carRepository.saveAndFlush(car);
     }
+
+    @Override
+    public void deleteCar(Car car) {
+        this.carRepository.delete(car);
+    }
 }

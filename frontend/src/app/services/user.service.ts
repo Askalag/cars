@@ -13,13 +13,13 @@ const httpOptions = {
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8080/api/test';
+  private usersUrl = 'http://localhost:8080/api/users';
 
 
   constructor(private http: HttpClient) { }
 
-  getUserByUserName(name: string): Observable<User> {
+  getUserByUserName(name: string) {
     httpOptions.params = new HttpParams().set('userName', name);
-    return this.http.get<User>(this.baseUrl + '/users/search', httpOptions);
+    return this.http.get<User>(this.usersUrl + '/search', httpOptions);
   }
 }

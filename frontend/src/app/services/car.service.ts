@@ -25,9 +25,9 @@ export class CarService {
   addCar(car: Car): Observable<string> {
     return this.http.put<string>(this.carUrl + 'add', car, httpOptions);
   }
-  // ----- new way for test
-  deleteCar(car: Car) {
-    return this.http.request('delete', this.carUrl + 'delete', {'body': car});
+  // ----- new way for test, temporarily (waiting... for del by id)
+  deleteCar(car: Car): Observable<Car> {
+    return this.http.request<Car>('delete', this.carUrl + 'delete', {'body': car});
   }
   getCarById(id: number) {
     return this.http.get<Car>(this.carUrl + 'view/' + id, httpOptions);

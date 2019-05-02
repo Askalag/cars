@@ -3,27 +3,27 @@
     <mat-card style="margin-left: 10px;
                      margin-right: 10px;">
 
-      <form class="form">
+      <div class="form">
         <div fxLayout="column" fxLayoutGap="10px">
-          <div fxLayout="row wrap" fxLayoutAlign="center center" *ngFor="let el of inputs">
+          <div fxLayout="row wrap" fxLayoutAlign="center center" *ngFor="let el of inputs;">
             <div class="mat-form-width" fxFlex="0" >
               <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Id" value="{{activeCar.id}}" disabled="{{isEdit[el]}}">
+              <input matInput placeholder="{{inputsLabel[el]}}" value="{{getLabel(el)}}" disabled="{{!isEdit[el]}}">
             </mat-form-field>
             </div>
             <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
               <span style="margin: 10px"></span>
               <div>
-                <button mat-raised-button (click)="onEdit(el)">{{isEdit[el]? 'edit' : 'save'}}</button>
+                <button mat-raised-button (click)="onEdit(el)">{{isEdit[el]? 'save' : 'edit'}}</button>
               </div>
               <div>
-                <button mat-raised-button disabled="{{isEdit[el]}}">cancel</button>
+                <button mat-raised-button (click)="onCancel(el)" disabled="{{!isEdit[el]}}" color="warn">cancel</button>
               </div>
               <span style="margin: 10px"></span>
             </div>
           </div>
         </div>
-      </form>
+      </div>
     </mat-card>
   </div>
 </div>

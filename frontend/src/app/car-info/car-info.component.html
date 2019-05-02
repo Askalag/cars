@@ -4,51 +4,23 @@
                      margin-right: 10px;">
 
       <form class="form">
-        <div fxLayout="column">
-          <div fxLayout="row wrap" fxLayoutAlign="start center">
-            <div class="mat-form-width" fxFlex="50">
+        <div fxLayout="column" fxLayoutGap="10px">
+          <div fxLayout="row wrap" fxLayoutAlign="center center" *ngFor="let el of inputs">
+            <div class="mat-form-width" fxFlex="0" >
               <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Id" value="{{activeCar.id}}">
+              <input matInput placeholder="Id" value="{{activeCar.id}}" disabled="{{isEdit[el]}}">
             </mat-form-field>
             </div>
-            <div fxFlex="5">1</div>
-            <div fxFlex="10">
-              <button mat-raised-button>edit</button>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(el)">{{isEdit[el]? 'edit' : 'save'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button disabled="{{isEdit[el]}}">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
             </div>
-            <div fxFlex="5">2</div>
-            <div fxFlex="10">
-              <button mat-raised-button>cancel</button>
-            </div>
-          </div>
-          <div>
-            <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field class="mat-form-width">
-              <input matInput placeholder="Favorite food" value="Sushi">
-            </mat-form-field>
           </div>
         </div>
       </form>

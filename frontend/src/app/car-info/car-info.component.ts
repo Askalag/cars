@@ -13,6 +13,9 @@ export class CarInfoComponent implements OnInit {
   public selectedCarId: number;
   public activeCar: Car;
 
+  public inputs: number[] = [0, 1, 2, 3, 4, 5, 6];
+  public isEdit: boolean[] = [false, false, false, false, false, false, false];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +31,10 @@ export class CarInfoComponent implements OnInit {
     this.carService.getCarById(this.selectedCarId).subscribe(data => {
       this.activeCar = data;
     });
+  }
+
+  onEdit(element: number) {
+    this.isEdit[element] = !this.isEdit[element];
   }
 
 }

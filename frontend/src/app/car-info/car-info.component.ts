@@ -15,7 +15,7 @@ export class CarInfoComponent implements OnInit {
   public editCar: Car;
 
   public inputs: number[] = [0, 1, 2, 3, 4, 5, 6];
-  public inputsLabel: any[] = ['Id', 'Model', 'Vin', 'Year', 'km', 'Date', 'Added By'];
+  public inputsLabel: any[] = ['id', 'model', 'vin', 'year', 'mileAge', 'date', 'addedBy'];
   public isEdit: boolean[] = [false, false, false, false, false, false, false];
 
 
@@ -31,26 +31,33 @@ export class CarInfoComponent implements OnInit {
 
     this.carService.getCarById(this.selectedCarId).subscribe(data => {
       this.activeCar = data;
-      this.editCar = this.activeCar;
+      this.editCar = {
+        id: this.activeCar.id,
+        model: this.activeCar.model,
+        vin: this.activeCar.vin,
+        year: this.activeCar.year,
+        mileAge: this.activeCar.mileAge,
+        date: this.activeCar.date,
+        addedBy: this.activeCar.addedBy
+      };
     });
   }
 
-  onEdit(element: number) {
-    this.isEdit[element] = !this.isEdit[element];
-    if (this.isEdit[element]) {
-      Object.values(this.activeCar)[element] = Object.values(this.editCar)[element];
+  onEdit(el: number) {
+    this.isEdit[el] = !this.isEdit[el];
+    if (!this.isEdit[el]) {
+      this.carService.updateCar(this.activeCar).subscribe(data => {
+        console.log(data);
+      });
+
     }
 
 
-  }
-  onCancel(element: number) {
-    this.isEdit[element] = !this.isEdit[element];
-    Object.values(this.editCar)[element] = Object.values(this.activeCar)[element];
-    console.log(Object.values(this.editCar)[element]);
 
   }
-  getLabel(element: number): string {
-    return Object.values(this.editCar)[element];
+  onCancel(el: number) {
+    this.isEdit[el] = !this.isEdit[el];
+    this.activeCar[this.inputsLabel[el]] = this.editCar[this.inputsLabel[el]];
   }
 
 }

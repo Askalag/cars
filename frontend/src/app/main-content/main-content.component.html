@@ -9,20 +9,20 @@
         <div class="example-nav-element">
           <button mat-button routerLink="home">Home</button>
         </div>
-        <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_JOKE')">
+        <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_USER')">
           <button mat-button routerLink="/cars/cars-board" color="primary">Cars Board</button>
         </div>
         <div class="example-nav-element" *ngIf="simpleUserInfo.roles.includes('ROLE_ADMIN')">
           <button mat-button (click)="sidenav.toggle()" color="warn">Claims</button>
         </div>
         <span class="example-spacer"></span>
-        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board' && simpleUserInfo.roles.includes('ROLE_JOKE')">
+        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board' && simpleUserInfo.roles.includes('ROLE_USER')">
           <button mat-stroked-button [color]="'exColor'" routerLink="/cars/cars-board/add-car">Add car</button>
         </div>
-        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board'">
+        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board' && simpleUserInfo.roles.includes('ROLE_ADMIN')">
           <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 1</button>
         </div>
-        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board'">
+        <div class="example-nav-element" *ngIf="router.url == '/cars/cars-board' && simpleUserInfo.roles.includes('ROLE_ADMIN')">
           <button mat-stroked-button [color]="'exColor'" routerLink="">Admin's menu 2</button>
         </div>
         <span class="example-spacer"></span>

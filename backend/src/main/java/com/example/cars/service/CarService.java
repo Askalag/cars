@@ -10,5 +10,7 @@ public interface CarService {
     Iterable<Car> getAll();
     Car getById(Long id);
     Car addCar(Car car);
+    Car updateCar(Car car);
     void deleteCar(Car car);
+
 }

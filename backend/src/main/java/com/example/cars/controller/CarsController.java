@@ -31,7 +31,7 @@ public class CarsController {
     private JwtProvider jwtProvider;
 
     @GetMapping("/cars-board")
-    @PreAuthorize("hasRole('JOKE') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public Iterable<Car> carsList() {
         return this.carService.getAll();
     }
@@ -60,6 +60,11 @@ public class CarsController {
     @GetMapping("/cars-board/view/{id}")
     public Car getCarById(@PathVariable Long id) {
         return this.carService.getById(id);
+    }
+
+    @PostMapping("/cars-board/view/update")
+    public Car updateCar(@RequestBody Car car) {
+        return this.carService.updateCar(car);
     }
 
     @DeleteMapping("/cars-board/delete")

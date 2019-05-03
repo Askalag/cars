@@ -1,4 +1,4 @@
-export class Car {
+export interface Car {
 
   id: number;
   model: string;
@@ -7,12 +7,5 @@ export class Car {
   mileAge: number;
   date: string;
   addedBy: string;
-
-  constructor(model: string, vin: string, year: number, mileage: number) {
-    this.model = model;
-    this.vin = vin;
-    this.year = year;
-    this.mileAge = mileage;
-  }
 
 }

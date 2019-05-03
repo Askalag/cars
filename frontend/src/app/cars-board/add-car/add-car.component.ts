@@ -103,12 +103,20 @@ export class AddCarComponent implements OnInit {
   }
 
   onSubmit() {
-    this.car = new Car(
-      this.addCarForm.get('model').value,
-      this.addCarForm.get('vin').value,
-      this.addCarForm.get('year').value,
-      this.addCarForm.get('mileAge').value
-    );
+    this.car = {
+      id: null,
+      model: this.addCarForm.get('model').value,
+      vin: this.addCarForm.get('vin').value,
+      year: this.addCarForm.get('year').value,
+      mileAge: this.addCarForm.get('mileAge').value,
+      date: null,
+      addedBy: null
+    }
+
+
+
+
+    ;
 
     this.carService.addCar(this.car).subscribe(
       data => {},

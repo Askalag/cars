@@ -37,6 +37,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public Car updateCar(Car car) {
+        return this.carRepository.saveAndFlush(car);
+    }
+
+    @Override
     public void deleteCar(Car car) {
         this.carRepository.delete(car);
     }

@@ -5,22 +5,113 @@
 
       <div class="form">
         <div fxLayout="column" fxLayoutGap="10px">
-          <div fxLayout="row wrap" fxLayoutAlign="center center" *ngFor="let el of inputs;">
+          <div fxLayout="row wrap" fxLayoutAlign="center center">
             <div class="mat-form-width" fxFlex="0" >
               <mat-form-field class="mat-form-width">
-              <input matInput placeholder="{{inputsLabel[el]}}" value="{{getLabel(el)}}" disabled="{{!isEdit[el]}}">
+              <input matInput placeholder="Id" [(ngModel)]="activeCar.id" disabled="{{!isEdit[0]}}">
             </mat-form-field>
             </div>
             <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
               <span style="margin: 10px"></span>
               <div>
-                <button mat-raised-button (click)="onEdit(el)">{{isEdit[el]? 'save' : 'edit'}}</button>
+                <button mat-raised-button (click)="onEdit(0)" disabled="{{!isEdit[0]}}">{{isEdit[0]? 'save' : 'edit'}}</button>
               </div>
               <div>
-                <button mat-raised-button (click)="onCancel(el)" disabled="{{!isEdit[el]}}" color="warn">cancel</button>
+                <button mat-raised-button (click)="onCancel(0)" disabled="{{!isEdit[0]}}" color="warn">cancel</button>
               </div>
               <span style="margin: 10px"></span>
             </div>
+            <div class="mat-form-width" fxFlex="0" >
+              <mat-form-field class="mat-form-width">
+                <input matInput placeholder="Model" [(ngModel)]="activeCar.model" disabled="{{!isEdit[1]}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(1)">{{isEdit[1]? 'save' : 'edit'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onCancel(1)" disabled="{{!isEdit[1]}}" color="warn">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
+            </div>
+            <div class="mat-form-width" fxFlex="0" >
+              <mat-form-field class="mat-form-width">
+                <input matInput placeholder="Vin" [(ngModel)]="activeCar.vin" disabled="{{!isEdit[2]}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(2)">{{isEdit[2]? 'save' : 'edit'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onCancel(2)" disabled="{{!isEdit[2]}}" color="warn">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
+            </div>
+            <div class="mat-form-width" fxFlex="0" >
+              <mat-form-field class="mat-form-width">
+                <input matInput placeholder="Year" [(ngModel)]="activeCar.year" disabled="{{!isEdit[3]}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(3)">{{isEdit[3]? 'save' : 'edit'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onCancel(3)" disabled="{{!isEdit[3]}}" color="warn">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
+            </div>
+            <div class="mat-form-width" fxFlex="0" >
+              <mat-form-field class="mat-form-width">
+                <input matInput placeholder="Km" [(ngModel)]="activeCar.mileAge" disabled="{{!isEdit[4]}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(4)">{{isEdit[4]? 'save' : 'edit'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onCancel(4)" disabled="{{!isEdit[4]}}" color="warn">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
+            </div>
+            <div class="mat-form-width" fxFlex="0" >
+              <mat-form-field class="mat-form-width">
+                <input matInput placeholder="Date" [(ngModel)]="activeCar.date" disabled="{{!isEdit[5]}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(5)" disabled="{{!isEdit[5]}}">{{isEdit[5]? 'save' : 'edit'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onCancel(5)" disabled="{{!isEdit[5]}}" color="warn">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
+            </div>
+            <div class="mat-form-width" fxFlex="0" >
+              <mat-form-field class="mat-form-width">
+                <input matInput placeholder="Added by" [(ngModel)]="activeCar.addedBy" disabled="{{!isEdit[6]}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex="nogrow" fxLayoutAlign="center center" fxLayoutGap="10px">
+              <span style="margin: 10px"></span>
+              <div>
+                <button mat-raised-button (click)="onEdit(6)" disabled="{{!isEdit[6]}}">{{isEdit[6]? 'save' : 'edit'}}</button>
+              </div>
+              <div>
+                <button mat-raised-button (click)="onCancel(6)" disabled="{{!isEdit[6]}}" color="warn">cancel</button>
+              </div>
+              <span style="margin: 10px"></span>
+            </div>
+
           </div>
         </div>
       </div>
